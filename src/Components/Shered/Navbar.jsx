@@ -33,7 +33,7 @@ const Navbar = () => {
 			<NavLink to="/myteam" className="flex">
 				<a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border-">My Team</a>
 			</NavLink>
-			<NavLink className="flex">
+			<NavLink to="/myrequest" className="flex">
 				<a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border-">Request For an Assets</a>
 			</NavLink>
 			<NavLink to="/assetlist" className="flex">

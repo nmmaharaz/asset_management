@@ -8,6 +8,7 @@ const MyAssets = () => {
   const { user } = useAuth();
   const [loading, setLoading] = useState(true);
 
+
   const { data: myAssistData, refetch: reset } = useQuery({
     queryKey: ["myAssistData"],
     queryFn: async () => {
@@ -20,10 +21,13 @@ const MyAssets = () => {
   });
   console.log(myAssistData, "vai ami hr");
 
-  return <div>
+  return <div className="w-10/12 mt-12 mx-auto">
+    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
     {
-        myAssistData?.map(asset=><EmployeeAssets key={asset._id} asset={asset}></EmployeeAssets>)
+        myAssistData?.map(asset=><EmployeeAssets key={asset._id} reset={reset} asset={asset}></EmployeeAssets>)
     }
+    </div>
+    
   </div>;
 };
 

@@ -11,6 +11,7 @@ import AddAsset from "../Page/AddAsset";
 import AssetList from "../Page/AssetList";
 import Employee from "../Hook/Employee";
 import MyAssets from "../EmployeePage.jsx/MyAssets";
+import MyRequest from "../EmployeePage.jsx/MyRequest";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path:"/myassets",
         element:<Employee><MyAssets></MyAssets></Employee>
+      },
+      {
+        path:"/myrequest",
+        element:<Employee><MyRequest></MyRequest></Employee>
       }
     ],
   },
