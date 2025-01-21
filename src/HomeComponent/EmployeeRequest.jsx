@@ -6,7 +6,7 @@ import { format } from "date-fns";
 
 const EmployeeRequest = ({ asset, reset, openModal, setOpenModal }) => {
   const { user } = useAuth();
-  const { _id, product_name, product_type, product_quantity, added_date } =
+  const { _id, product_name, product_type, product_quantity, added_date, hr_email } =
     asset || [];
   // const noteRef = useRef()
   const handleSubmitRequest = async (e) => {
@@ -22,6 +22,7 @@ const EmployeeRequest = ({ asset, reset, openModal, setOpenModal }) => {
       product_type,
       additional_rule,
       request_date,
+      hr_email,
       approval_date: "",
       request_status: "Pending",
     };

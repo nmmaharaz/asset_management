@@ -13,6 +13,7 @@ import Employee from "../Hook/Employee";
 import MyAssets from "../EmployeePage.jsx/MyAssets";
 import MyRequest from "../EmployeePage.jsx/MyRequest";
 import MyTeam from "../EmployeePage.jsx/MyTeam";
+import AllRequest from "../Page/allrequest";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,14 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/allrequest",
+        element: (
+          <HRRoute>
+            <AllRequest></AllRequest>
+          </HRRoute>
+        ),
+      },
+      {
         path: "/myemployeelist",
         element: (
           <HRRoute>
@@ -47,26 +56,46 @@ const router = createBrowserRouter([
           </HRRoute>
         ),
       },
-      { 
+      {
         path: "/addasset",
-        element: <HRRoute><AddAsset></AddAsset></HRRoute>
+        element: (
+          <HRRoute>
+            <AddAsset></AddAsset>
+          </HRRoute>
+        ),
       },
       {
-        path:"/assetlist",
-        element:<HRRoute><AssetList></AssetList></HRRoute>
+        path: "/assetlist",
+        element: (
+          <HRRoute>
+            <AssetList></AssetList>
+          </HRRoute>
+        ),
       },
       {
-        path:"/myassets",
-        element:<Employee><MyAssets></MyAssets></Employee>
+        path: "/myassets",
+        element: (
+          <Employee>
+            <MyAssets></MyAssets>
+          </Employee>
+        ),
       },
       {
-        path:"/myrequest",
-        element:<Employee><MyRequest></MyRequest></Employee>
+        path: "/myrequest",
+        element: (
+          <Employee>
+            <MyRequest></MyRequest>
+          </Employee>
+        ),
       },
       {
-        path:"/myteam",
-        element:<Employee><MyTeam></MyTeam></Employee>
-      }
+        path: "/myteam",
+        element: (
+          <Employee>
+            <MyTeam></MyTeam>
+          </Employee>
+        ),
+      },
     ],
   },
   {

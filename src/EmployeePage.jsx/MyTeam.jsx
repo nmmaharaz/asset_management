@@ -2,6 +2,7 @@ import axios from "axios";
 import useAuth from "../Hook/useAtuh";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import Team from "../HomeComponent/Team";
 
 const MyTeam = () => {
     const { user } = useAuth();
@@ -19,8 +20,10 @@ const MyTeam = () => {
       },
     });
     return (
-        <div>
-            Hellow my page 
+        <div className="w-8/12 mx-auto my-7">
+            <div className="grid gap-7 grid-cols-1 sm:grid-cols-1 lg:grid-cols-3">
+                {myAssistData?.map(team=><Team key={team._id} reset={reset} team={team}></Team>)}
+            </div>
         </div>
     );
 };

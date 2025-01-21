@@ -45,7 +45,7 @@ const Navbar = () => {
 			<NavLink to="/addasset" className="flex">
 				<a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border-">Add an Assets</a>
 			</NavLink>
-			<NavLink className="flex">
+			<NavLink to="/allrequest" className="flex">
 				<a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border-">All Requests</a>
 			</NavLink>
 			<NavLink to="/addemployee" className="flex">
