@@ -21,6 +21,7 @@ const Request = ({ request, refetch }) => {
         `${import.meta.env.VITE_API_URL}/request/${_id}`,
         updateData
       );
+      console.log(data, "o data")
       toast.success("Employee account signup successfully");
       refetch();
     } catch (error) {
@@ -67,6 +68,7 @@ const Request = ({ request, refetch }) => {
           (product_type == "Returnable") ? (
             <button
               onClick={handleReturn}
+              disabled={request_status == "Returned"}
               className="text-right btn bg-purple-500 text-white ml-5"
             >
               Return

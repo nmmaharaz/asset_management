@@ -18,7 +18,7 @@ const AddAsset = () => {
     const assetData = {
       product_name,
       product_type,
-      product_quantity,
+      product_quantity: parseInt(product_quantity),
       added_date,
       hr_email: user?.email,
     };

@@ -12,6 +12,7 @@ import AssetList from "../Page/AssetList";
 import Employee from "../Hook/Employee";
 import MyAssets from "../EmployeePage.jsx/MyAssets";
 import MyRequest from "../EmployeePage.jsx/MyRequest";
+import MyTeam from "../EmployeePage.jsx/MyTeam";
 
 const router = createBrowserRouter([
   {
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/myteam",
+        path: "/myemployeelist",
         element: (
           <HRRoute>
             <MyEmployee></MyEmployee>
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
       {
         path:"/myrequest",
         element:<Employee><MyRequest></MyRequest></Employee>
+      },
+      {
+        path:"/myteam",
+        element:<Employee><MyTeam></MyTeam></Employee>
       }
     ],
   },

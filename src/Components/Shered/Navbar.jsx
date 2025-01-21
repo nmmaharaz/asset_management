@@ -27,11 +27,14 @@ const Navbar = () => {
 			<NavLink to="/joinashrmanager" className="flex">
 				<a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border-">Join as Join as HR Manager</a>
 			</NavLink>
+			<NavLink to="/myteam" className="flex">
+				<a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border-">My Team</a>
+			</NavLink>
 			<NavLink to="/myassets" className="flex">
 				<a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border-">My Assets</a>
 			</NavLink>
-			<NavLink to="/myteam" className="flex">
-				<a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border-">My Team</a>
+			<NavLink to="/myemployeelist" className="flex">
+				<a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border-">My Employee List</a>
 			</NavLink>
 			<NavLink to="/myrequest" className="flex">
 				<a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border-">Request For an Assets</a>
@@ -44,9 +47,6 @@ const Navbar = () => {
 			</NavLink>
 			<NavLink className="flex">
 				<a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border-">All Requests</a>
-			</NavLink>
-			<NavLink className="flex">
-				<a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border-">My Employee List</a>
 			</NavLink>
 			<NavLink to="/addemployee" className="flex">
 				<a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border-">Add an Employee</a>
