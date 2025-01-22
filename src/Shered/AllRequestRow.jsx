@@ -65,7 +65,7 @@ const AllRequestRow = ({ reset, request }) => {
       </td>
       <td className="p-3 text-center">
         <button
-          disabled={request_status == "Approved"}
+          disabled={request_status !=="Pending"}
           onClick={handleApprove}
           className="btn"
         >
@@ -73,7 +73,7 @@ const AllRequestRow = ({ reset, request }) => {
         </button>
       </td>
       <td className="p-3 text-right">
-        <button onClick={handleReject} className="btn">
+        <button disabled={request_status !=="Pending"} onClick={handleReject} className="btn">
           Reject
         </button>
       </td>
