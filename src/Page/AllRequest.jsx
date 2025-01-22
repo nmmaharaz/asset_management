@@ -3,19 +3,20 @@ import useAuth from "../Hook/useAtuh";
 import AllRequestRow from "../Shered/AllRequestRow";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import useAxiosSecure from "../Hook/useAxiosSecure";
 
 const AllRequest = () => {
     const { user } = useAuth();
   const [loading, setLoading] = useState(true);
-
+  const axiosSecure = useAxiosSecure()
   const {
     data: allRequest,
     refetch: reset,
   } = useQuery({
     queryKey: ["allRequest"],
     queryFn: async () => {
-      const { data } = await axios(
-        `${import.meta.env.VITE_API_URL}/assetsrequest/${user?.email}`);
+      const { data } = await axiosSecure(
+        `/assetsrequest/${user?.email}`);
         setLoading(false);
         return data
     },
