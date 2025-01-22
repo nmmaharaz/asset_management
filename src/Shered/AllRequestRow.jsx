@@ -14,16 +14,27 @@ const AllRequestRow = ({ reset, request }) => {
     approval_date,
   } = request || [];
   const handleApprove = async () => {
-        const date = new Date();
-        const approval_date = format(date, "dd/MM/yyyy");
-        const updateData = {
-          approval_date,
-          request_status: "Approved",
-        };
+    const date = new Date();
+    const approval_date = format(date, "dd/MM/yyyy");
+    const updateData = {
+      approval_date,
+      request_status: "Approved",
+    };
     const { data } = await axios.patch(
-      `${import.meta.env.VITE_API_URL}/requestInfo/${_id}`,updateData
+      `${import.meta.env.VITE_API_URL}/requestInfo/${_id}`,
+      updateData
     );
-    reset()
+    reset();
+  };
+  const handleReject = async () => {
+    const updateData = {
+      request_status: "Rejected",
+    };
+    const { data } = await axios.patch(
+      `${import.meta.env.VITE_API_URL}/requestRejectInfo/${_id}`,
+      updateData
+    );
+    reset();
   };
   return (
     <tr className="border-b border-opacity-20 dark:border-gray-300 dark:bg-gray-50">
@@ -53,12 +64,18 @@ const AllRequestRow = ({ reset, request }) => {
         <p>{request_date}</p>
       </td>
       <td className="p-3 text-center">
-        <button onClick={handleApprove} className="btn">
+        <button
+          disabled={request_status == "Approved"}
+          onClick={handleApprove}
+          className="btn"
+        >
           Approve
         </button>
       </td>
       <td className="p-3 text-right">
-        <button className="btn">Reject</button>
+        <button onClick={handleReject} className="btn">
+          Reject
+        </button>
       </td>
     </tr>
   );
