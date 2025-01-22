@@ -18,6 +18,7 @@ const EmployeeRequest = ({ asset, reset, openModal, setOpenModal }) => {
     const assetRequest = {
       asset_id: _id,
       email: user?.email,
+      name:user?.displayName,
       product_name,
       product_type,
       additional_rule,
@@ -26,6 +27,7 @@ const EmployeeRequest = ({ asset, reset, openModal, setOpenModal }) => {
       approval_date: "",
       request_status: "Pending",
     };
+    console.table(assetRequest)
     const { data } = await axios.post(
       `${import.meta.env.VITE_API_URL}/asset_request`,
       assetRequest

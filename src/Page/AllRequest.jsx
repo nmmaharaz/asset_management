@@ -38,12 +38,15 @@ const AllRequest = () => {
               </colgroup>
               <thead className="dark:bg-gray-300">
                 <tr className="text-left">
-                  <th className="p-3">Invoice #</th>
-                  <th className="p-3">Client</th>
-                  <th className="p-3">Issued</th>
-                  <th className="p-3">Due</th>
-                  <th className="p-3 text-right">Amount</th>
-                  <th className="p-3">Status</th>
+                  <th className="p-3 text-center">Invoice #</th>
+                  <th className="p-3 text-center">Name</th>
+                  <th className="p-3 text-center">Asset Type</th>
+                  <th className="p-3 text-center">Employee Email</th>
+                  <th className="p-3 text-center">Employee Name</th>
+                  <th className="p-3 text-center">Addition Note</th>
+                  <th className="p-3 text-center">Status</th>
+                  <th className="p-3 text-center">Approve</th>
+                  <th className="p-3 text-center">Reject</th>
                 </tr>
               </thead>
               <tbody>
