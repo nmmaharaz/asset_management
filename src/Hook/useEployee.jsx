@@ -2,17 +2,18 @@ import axios from "axios";
 import useAuth from "./useAtuh";
 // import useHRAxiosSecure from "./useHRAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "./useAxiosSecure";
 // import Loading from "../Loading/Loading";
 
 const useEmployee = () => {
-  // const hrAxiosSecure = useHRAxiosSecure();
+  const axiosSecure = useAxiosSecure()
   const { loading, user } = useAuth();
   const { data: role , isLoading } = useQuery({
     queryKey: ["Erole", user?.email],
     enabled: !loading && !!user?.email,
     queryFn: async () => {
-      const { data } = await axios(
-        `${import.meta.env.VITE_API_URL}/employee/role/${user?.email}`
+      const { data } = await axiosSecure(
+        `/employee/role/${user?.email}`
       );
       console.log("data data data", data);
       return data.role;
