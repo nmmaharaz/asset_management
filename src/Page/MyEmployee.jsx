@@ -3,6 +3,8 @@ import axios from "axios";
 import { useState } from "react";
 import useAuth from "../Hook/useAtuh";
 import MyEmployeeRow from "../Shered/MyEmployeeRow";
+import { axiosSecure } from "../Hook/useAxiosSecure";
+import PackagePayment from "./PackagePayment";
 
 const MyEmployee = () => {
     const {user} = useAuth()
@@ -24,7 +26,7 @@ const MyEmployee = () => {
     const {data: Employee = [], isLoading, refetch} = useQuery({
         queryKey:['Employee'],
         queryFn:async()=>{
-            const {data} = await axios(`${import.meta.env.VITE_API_URL}/employee/${user?.email}`)
+            const {data} = await axiosSecure(`/employee/${user?.email}`)
             setLoading(false)
           return data
         }
@@ -32,6 +34,8 @@ const MyEmployee = () => {
      console.log()
     return (
         <div>
+
+        <PackagePayment></PackagePayment>
         <div className="text-purple-800 text-5xl font-bold">employee list</div>
         <p>Employee Limit: {HREmployee?.email}</p>
         <p>Employee Limit: {HREmployee?.employee_limit}</p>

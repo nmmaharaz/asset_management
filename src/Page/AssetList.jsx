@@ -4,6 +4,7 @@ import Loading from "../Loading/Loading";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Asset from "../Shered/Asset";
+import { axiosSecure } from "../Hook/useAxiosSecure";
 
 const AssetList = () => {
     const { user } = useAuth();
@@ -15,8 +16,8 @@ const AssetList = () => {
       } = useQuery({
         queryKey: ["allAssets"],
         queryFn: async () => {
-          const { data } = await axios(
-            `${import.meta.env.VITE_API_URL}/allassets/${user?.email}`
+          const { data } = await axiosSecure(
+            `/allassets/${user?.email}`
           );
           setLoading(false);
           return data;

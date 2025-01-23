@@ -3,6 +3,7 @@ import useAuth from "../Hook/useAtuh";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { format } from "date-fns";
+import { axiosSecure } from "../Hook/useAxiosSecure";
 
 const AddAsset = () => {
   const { user } = useAuth();
@@ -22,7 +23,7 @@ const AddAsset = () => {
       added_date,
       hr_email: user?.email,
     };
-    axios.post(`${import.meta.env.VITE_API_URL}/asset`, assetData);
+    axiosSecure.post(`/asset`, assetData);
     toast.success("Employee account signup successfully");
   };
   return (

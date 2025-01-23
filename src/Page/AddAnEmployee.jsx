@@ -5,6 +5,8 @@ import AddEmployeeRow from "../Shered/AddEmployeeRow";
 import axios from "axios";
 import { useState } from "react";
 import AddEmployeeCard from "../Shered/AddEmployeeCard";
+import { axiosSecure } from "../Hook/useAxiosSecure";
+import PackagePayment from "./PackagePayment";
 // import AddEmployeeCard from "../Shered/AddEmployeeCard";
 const AddAnEmployee = () => {
   // const hrAxiosSecure = useHRAxiosSecure();
@@ -17,8 +19,8 @@ const AddAnEmployee = () => {
   } = useQuery({
     queryKey: ["HREmployee"],
     queryFn: async () => {
-      const { data } = await axios(
-        `${import.meta.env.VITE_API_URL}/hremployee/${user?.email}`);
+      const { data } = await axiosSecure(
+        `/hremployee/${user?.email}`);
         setLoading(false);
         return data
     },
@@ -43,6 +45,9 @@ const AddAnEmployee = () => {
   if (loading) return <Loading></Loading>;
   return (
     <div className="w-9/12 mx-auto">
+      <div className="my-11">
+      <PackagePayment></PackagePayment>
+      </div>
       <div className="bg-white py-8 rounded-md">
         <div className="text-purple-800 text-5xl font-bold">
           Add an employee
