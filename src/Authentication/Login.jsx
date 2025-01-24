@@ -2,9 +2,11 @@
 import { toast, ToastContainer } from "react-toastify";
 import useAuth from "../Hook/useAtuh";
 import SignUpGoogle from "./SignUpGoogle";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { signIn } = useAuth();
+  const navigate = useNavigate()
   // const { signUp } = useAuth();
   const handleLogin = (e) => {
     e.preventDefault();
@@ -14,8 +16,8 @@ const Login = () => {
     console.table( email, password);
     signIn(email, password)
       .then((result) => {
-        console.log(result)
         toast.success("Employee account signup successfully");
+        navigate("/")
       })
       .catch((error) => {
         console.log(error)

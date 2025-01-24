@@ -5,24 +5,66 @@ import { useEffect, useState } from "react";
 import { axiosSecure } from "../Hook/useAxiosSecure";
 import useAuth from "../Hook/useAtuh";
 import { toast } from "react-toastify";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { data } from "react-router-dom";
+import Loading from "../Loading/Loading";
 
 const CheckoutForm = () => {
-    const {user} = useAuth()
+  const { user } = useAuth();
   const [clientSecret, setClientSecret] = useState("");
-  const [processing, setProcessing] = useState(false)
+  const [loading, setLoading] = useState(true);
+  const [total, setTotal] = useState(0);
+  const [totalPrice, setTimePrice] = useState(0);
+  const [increseLimit, setIncreseLimit] = useState(0);
+  const [processing, setProcessing] = useState(false);
+  const { data: HREmployee, refetch: reset } = useQuery({
+    queryKey: ["HREmployee"],
+    queryFn: async () => {
+      const { data } = await axios(
+        `${import.meta.env.VITE_API_URL}/totalPayment/${user?.email}`
+      );
+      setTimePrice(data.package);
+      return data;
+    },
+  });
+
+  useEffect(() => {
+    if (totalPrice === 5) {
+      setIncreseLimit(5);
+    } else if (totalPrice === 8) {
+      setIncreseLimit(10);
+    } else if (totalPrice === 15) {
+      setIncreseLimit(20);
+    }
+  }, [totalPrice]);
+
+  // if(totalPrice === 8){
+  //   setIncreseLimit(10)
+  // }
+  // }
+  // if(totalPrice === 15){
+  //   setIncreseLimit(20)
+  // }
+
+  
   useEffect(() => {
     getPaymentIntent();
-  }, []);
-  console.log(clientSecret);
+  }, [HREmployee?.package]);
+  
+  console.log(increseLimit, "this is limit");
   const getPaymentIntent = async () => {
+    console.log(total, "this is tk");
     try {
       const { data } = await axiosSecure.post("/create-payment-intent", {
-        price: 1000,
         email: user?.email,
       });
       setClientSecret(data.clientSecret);
+      setTotal(data.total);
+      setLoading(false);
     } catch (err) {
       console.log(err);
+      setLoading(false);
     }
   };
 
@@ -30,67 +72,61 @@ const CheckoutForm = () => {
   const elements = useElements();
 
   const handleSubmit = async (event) => {
-      event.preventDefault();
-      setProcessing( true)
+    event.preventDefault();
+    setProcessing(true);
 
     if (!stripe || !elements) {
-      // Stripe.js has not loaded yet. Make sure to disable
-      // form submission until Stripe.js has loaded.
       return;
     }
 
-    // Get a reference to a mounted CardElement. Elements knows how
-    // to find your CardElement because there can only ever be one of
-    // each type of element.
     const card = elements.getElement(CardElement);
 
     if (card == null) {
-        setProcessing(false)
+      setProcessing(false);
       return;
     }
 
-    // Use your card Element with other Stripe.js APIs
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card,
     });
 
     if (error) {
-        setProcessing(false)
+      setProcessing(false);
       return console.log("[error]", error);
     } else {
       console.log("[PaymentMethod]", paymentMethod);
     }
 
-    
     const { paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
-        payment_method: {
-          card: card,
-          billing_details: {
-            name: user?.displayName,
-            email:user?.email,
-          },
+      payment_method: {
+        card: card,
+        billing_details: {
+          name: user?.displayName,
+          email: user?.email,
         },
-      })
-  
-      if (paymentIntent.status === 'succeeded') {
-        try {
+      },
+    });
 
+    if (paymentIntent.status === "succeeded") {
+      try {
         const paymentInfo = {
-            transactionId: paymentIntent?.id,
-            name: user?.displayName,
-            email:user?.email,
-        }
-          await axiosSecure.post('/order', paymentInfo)
-          toast.success('Order Successful!')
-        } catch (err) {
-          console.log(err)
-        } finally {
-          setProcessing(false)
-        }
+          transactionId: paymentIntent?.id,
+          name: user?.displayName,
+          email: user?.email,
+          
+        };
+        await axiosSecure.post("/order", paymentInfo);
+        toast.success("Order Successful!");
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setProcessing(false);
       }
-
+    }
   };
+
+  if (loading) return <Loading></Loading>;
 
   return (
     <form onSubmit={handleSubmit}>
@@ -110,12 +146,12 @@ const CheckoutForm = () => {
           },
         }}
       />
-      <button 
+      <button
         className="bg-purple-500 text-white font-semibold text-xl px-3 rounded-md py-1"
         type="submit"
         disabled={!stripe || !clientSecret || processing}
       >
-        $1000
+        {total}
       </button>
     </form>
   );

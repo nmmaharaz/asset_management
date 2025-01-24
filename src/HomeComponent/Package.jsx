@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Package = () => {
   return (
     <div>
@@ -35,7 +37,7 @@ const Package = () => {
 							<span>Tristique enim nec</span>
 						</li>
 					</ul>
-					<button type="button" className="inline-block px-5 py-3 font-semibold tracking-wider text-center rounded bg-violet-600 text-gray-50">Get Started</button>
+					<Link to="/payment" className="inline-block w-full px-5 py-3 font-semibold tracking-wider text-center rounded bg-violet-600 text-gray-50">Buy Now</Link>
 				</div>
 			</div>
 			<div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
@@ -73,7 +75,7 @@ const Package = () => {
 							<span>Aenean et lectus blandit</span>
 						</li>
 					</ul>
-					<a rel="noopener noreferrer" href="#" className="inline-block w-full px-5 py-3 font-bold tracking-wider text-center rounded bg-gray-100 text-violet-600">Get Started</a>
+					<Link to="/payment"  className="inline-block w-full px-5 py-3 font-bold tracking-wider text-center rounded bg-gray-100 text-violet-600">Buy Now</Link>
 				</div>
 			</div>
 			<div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
@@ -117,7 +119,7 @@ const Package = () => {
 							<span>Vivamus ut lectus ex</span>
 						</li>
 					</ul>
-					<a rel="noopener noreferrer" href="#" className="inline-block w-full px-5 py-3 font-semibold tracking-wider text-center rounded bg-violet-600 text-gray-50">Get Started</a>
+					<Link to="/payment" className="inline-block w-full px-5 py-3 font-semibold tracking-wider text-center rounded bg-violet-600 text-gray-50">Buy Now</Link>
 				</div>
 			</div>
 		</div>

@@ -14,6 +14,7 @@ import MyAssets from "../EmployeePage.jsx/MyAssets";
 import MyRequest from "../EmployeePage.jsx/MyRequest";
 import MyTeam from "../EmployeePage.jsx/MyTeam";
 import AllRequest from "../Page/allrequest";
+import PackagePayment from "../Page/PackagePayment";
 
 const router = createBrowserRouter([
   {
@@ -96,6 +97,10 @@ const router = createBrowserRouter([
           </Employee>
         ),
       },
+      {
+        path:"/payment",
+        element:<PackagePayment></PackagePayment>
+      }
     ],
   },
   {

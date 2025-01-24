@@ -6,7 +6,7 @@ import axios from "axios";
 import { useState } from "react";
 import AddEmployeeCard from "../Shered/AddEmployeeCard";
 import { axiosSecure } from "../Hook/useAxiosSecure";
-import PackagePayment from "./PackagePayment";
+// import PackagePayment from "./PackagePayment";
 // import AddEmployeeCard from "../Shered/AddEmployeeCard";
 const AddAnEmployee = () => {
   // const hrAxiosSecure = useHRAxiosSecure();
@@ -46,7 +46,7 @@ const AddAnEmployee = () => {
   return (
     <div className="w-9/12 mx-auto">
       <div className="my-11">
-      <PackagePayment></PackagePayment>
+      
       </div>
       <div className="bg-white py-8 rounded-md">
         <div className="text-purple-800 text-5xl font-bold">

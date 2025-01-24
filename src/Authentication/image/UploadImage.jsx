@@ -6,6 +6,7 @@ const UploadImage = () => {
       </label>
       <div className="flex">
         <input
+          required
           type="file"
           name="photo"
           id="files"

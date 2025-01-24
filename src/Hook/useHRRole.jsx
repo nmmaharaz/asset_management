@@ -16,7 +16,6 @@ const useHRRole = () => {
       const { data } = await axiosSecure(
         `/hrusers/role/${user?.email}`
       );
-      console.log("data data data", data);
       return data.role;
     },
   });
