@@ -3,15 +3,17 @@ import useAuth from "../../Hook/useAtuh";
 import useEmployee from "../../Hook/useEployee";
 import useHRRole from "../../Hook/useHRRole";
 import { useState } from "react";
+import Loading from "../../Loading/Loading";
 
 const Navbar = () => {
-  const { user, log0ut } = useAuth();
+  const { user, loading, log0ut } = useAuth();
   const [role] = useEmployee();
   const hrRole = useHRRole();
   console.log(hrRole[0], "hellow");
   const handleLogout = () => {
     log0ut();
   };
+  if(loading) return<Loading></Loading>
   return (
     <div>
       <header className="p-4 dark:bg-gray-100 dark:text-gray-800">

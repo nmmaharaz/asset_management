@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 
 const Package = () => {
+	const handlePayment = async(money)=>{
+		console.log(money, "money")
+	}
   return (
     <div>
       <section className="py-20 bg-gray-100 text-gray-800">
@@ -37,7 +40,7 @@ const Package = () => {
 							<span>Tristique enim nec</span>
 						</li>
 					</ul>
-					<Link to="/payment" className="inline-block w-full px-5 py-3 font-semibold tracking-wider text-center rounded bg-violet-600 text-gray-50">Buy Now</Link>
+					<Link to="/payment" onClick={()=>handlePayment(5)} className="inline-block w-full px-5 py-3 font-semibold tracking-wider text-center rounded bg-violet-600 text-gray-50">Buy Now</Link>
 				</div>
 			</div>
 			<div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
@@ -75,7 +78,7 @@ const Package = () => {
 							<span>Aenean et lectus blandit</span>
 						</li>
 					</ul>
-					<Link to="/payment"  className="inline-block w-full px-5 py-3 font-bold tracking-wider text-center rounded bg-gray-100 text-violet-600">Buy Now</Link>
+					<Link to="/payment" onClick={()=>handlePayment(10)} className="inline-block w-full px-5 py-3 font-bold tracking-wider text-center rounded bg-gray-100 text-violet-600">Buy Now</Link>
 				</div>
 			</div>
 			<div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
@@ -119,7 +122,7 @@ const Package = () => {
 							<span>Vivamus ut lectus ex</span>
 						</li>
 					</ul>
-					<Link to="/payment" className="inline-block w-full px-5 py-3 font-semibold tracking-wider text-center rounded bg-violet-600 text-gray-50">Buy Now</Link>
+					<Link to="/payment" onClick={()=>handlePayment(15)} className="inline-block w-full px-5 py-3 font-semibold tracking-wider text-center rounded bg-violet-600 text-gray-50">Buy Now</Link>
 				</div>
 			</div>
 		</div>

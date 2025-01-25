@@ -114,10 +114,10 @@ const CheckoutForm = () => {
           transactionId: paymentIntent?.id,
           name: user?.displayName,
           email: user?.email,
-          
+          limit: increseLimit
         };
         await axiosSecure.post("/order", paymentInfo);
-        toast.success("Order Successful!");
+        toast.success("Buy Now Successful!");
       } catch (err) {
         console.log(err);
       } finally {

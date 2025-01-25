@@ -6,6 +6,7 @@ import axios from "axios";
 import { useState } from "react";
 import AddEmployeeCard from "../Shered/AddEmployeeCard";
 import { axiosSecure } from "../Hook/useAxiosSecure";
+import { Link } from "react-router-dom";
 // import PackagePayment from "./PackagePayment";
 // import AddEmployeeCard from "../Shered/AddEmployeeCard";
 const AddAnEmployee = () => {
@@ -49,6 +50,8 @@ const AddAnEmployee = () => {
       
       </div>
       <div className="bg-white py-8 rounded-md">
+        <div className="flex justify-between">
+        <div>
         <div className="text-purple-800 text-5xl font-bold">
           Add an employee
         </div>
@@ -56,6 +59,11 @@ const AddAnEmployee = () => {
         <p>limit: {HREmployee?.employee_limit}</p>
         <p>limit: {HREmployee?.total_employee}</p>
         <p>{HREmployee?.email}</p>
+        </div>
+        <div>
+          <Link to="/package" className="btn btn-ghost bg-purple-600">Increse Limit</Link>
+        </div>
+        </div>
         {/* <p>{HREmployee?.length}</p>
         
         {

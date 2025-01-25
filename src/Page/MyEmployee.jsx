@@ -34,8 +34,9 @@ const MyEmployee = () => {
      console.log()
     return (
         <div>
-
+          
         <PackagePayment></PackagePayment>
+
         <div className="text-purple-800 text-5xl font-bold">employee list</div>
         <p>Employee Limit: {HREmployee?.email}</p>
         <p>Employee Limit: {HREmployee?.employee_limit}</p>
