@@ -3,24 +3,31 @@ import { toast, ToastContainer } from "react-toastify";
 import useAuth from "../Hook/useAtuh";
 import SignUpGoogle from "./SignUpGoogle";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { signIn } = useAuth();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   // const { signUp } = useAuth();
   const handleLogin = (e) => {
     e.preventDefault();
     const formData = e.target;
     const email = formData.email.value;
     const password = formData.password.value;
-    console.table( email, password);
+    console.table(email, password);
     signIn(email, password)
       .then((result) => {
-        toast.success("Employee account signup successfully");
-        navigate("/")
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Your work has been saved",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+        navigate("/");
       })
       .catch((error) => {
-        console.log(error)
+        console.log(error);
         toast.error("Already create this account!");
       });
   };

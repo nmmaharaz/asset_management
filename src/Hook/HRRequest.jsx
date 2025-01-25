@@ -4,14 +4,14 @@ import useHRRole from "./useHRRole";
 import useAuth from "./useAtuh";
 // import Loading from "../Loading/Loading";
 // import useAuth from "../Hook/useAtuh.js";
-const HRRoute = ({children}) => {
-  // const {loading} = useAuth()
+const HRReqest = ({children}) => {
+  const {loading} = useAuth()
   const [role, isLoading] = useHRRole()
-  // if(loading) return 
+  if(loading) return 
   if(isLoading)return <Loading></Loading>
-  if (role == 'HR') return children
+  if (role == 'HR_Request') return children
 
-  return <Navigate to="/payment"></Navigate>
+  return <Navigate to="/JoinAsEmployee"></Navigate>
 };
 
-export default HRRoute;
+export default HRReqest;

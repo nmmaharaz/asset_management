@@ -9,6 +9,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { data } from "react-router-dom";
 import Loading from "../Loading/Loading";
+import { axiosPublic } from "../Hook/useAxiosPublic";
 
 const CheckoutForm = () => {
   const { user } = useAuth();
@@ -56,7 +57,7 @@ const CheckoutForm = () => {
   const getPaymentIntent = async () => {
     console.log(total, "this is tk");
     try {
-      const { data } = await axiosSecure.post("/create-payment-intent", {
+      const { data } = await axiosPublic.post("/create-payment-intent", {
         email: user?.email,
       });
       setClientSecret(data.clientSecret);

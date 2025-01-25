@@ -3,6 +3,7 @@ import Footer from "../Components/Shered/Footer";
 import Navbar from "../Components/Shered/Navbar";
 import { ToastContainer } from "react-toastify";
 
+
 const MainLayout = () => {
     return (
         <div className="bg-slate-100">

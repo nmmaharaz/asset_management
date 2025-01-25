@@ -4,6 +4,7 @@ import useEmployee from "../../Hook/useEployee";
 import useHRRole from "../../Hook/useHRRole";
 import { useState } from "react";
 import Loading from "../../Loading/Loading";
+import "./Navbar.css"
 
 const Navbar = () => {
   const { user, loading, log0ut } = useAuth();
@@ -13,7 +14,7 @@ const Navbar = () => {
   const handleLogout = () => {
     log0ut();
   };
-  if(loading) return<Loading></Loading>
+  // if(loading) return<Loading></Loading>
   return (
     <div>
       <header className="p-4 dark:bg-gray-100 dark:text-gray-800">
@@ -36,14 +37,8 @@ const Navbar = () => {
           </a>
 
           <ul className="items-stretch hidden space-x-3 lg:flex">
-            <NavLink className="flex">
-              <a
-                rel="noopener noreferrer"
-                href="#"
-                className="flex items-center px-4 -mb-1 border-b-2 dark:border- dark:text-violet-600 dark:border-violet-600"
-              >
+            <NavLink className=" hoovereffect">
                 Home
-              </a>
             </NavLink>
 
             {hrRole[0] || role ? (
@@ -51,36 +46,68 @@ const Navbar = () => {
                 {role === "Employee" && (
                   <>
                     {" "}
-                    <NavLink to="/myteam" className="flex">
-                      <a
-                        rel="noopener noreferrer"
-                        href="#"
-                        className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
-                      >
+                    <NavLink to="/myteam" className="hoovereffect">
                         My Team
-                      </a>
                     </NavLink>
-                    <NavLink to="/myrequest" className="flex">
-                      <a
-                        rel="noopener noreferrer"
-                        href="#"
-                        className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
-                      >
+                    <NavLink to="/myrequest" className="hoovereffect">
                         Request For an Assets
-                      </a>
                     </NavLink>
-                    <NavLink to="/myassets" className="flex">
+                    <NavLink to="/myassets" className="hoovereffect">
+                        My Assets
+                    </NavLink>
+                  </>
+                )}
+                {hrRole[0] === "HR"  && (
+                  <>
+                    <NavLink to="/myemployeelist" className="flex">
                       <a
                         rel="noopener noreferrer"
                         href="#"
                         className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
                       >
-                        My Assets
+                        My Employee List
+                      </a>
+                    </NavLink>
+
+                    <NavLink to="/assetlist" className="flex">
+                      <a
+                        rel="noopener noreferrer"
+                        href="#"
+                        className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
+                      >
+                        Assets List
+                      </a>
+                    </NavLink>
+                    <NavLink to="/addasset" className="flex">
+                      <a
+                        rel="noopener noreferrer"
+                        href="#"
+                        className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
+                      >
+                        Add an Assets
+                      </a>
+                    </NavLink>
+                    <NavLink to="/allrequest" className="flex">
+                      <a
+                        rel="noopener noreferrer"
+                        href="#"
+                        className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
+                      >
+                        All Requests
+                      </a>
+                    </NavLink>
+                    <NavLink to="/addemployee" className="flex">
+                      <a
+                        rel="noopener noreferrer"
+                        href="#"
+                        className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
+                      >
+                        Add an Employee
                       </a>
                     </NavLink>
                   </>
                 )}
-                {hrRole[0] === "HR" && (
+                {hrRole[0] === "HR_Request" && (
                   <>
                     <NavLink to="/myemployeelist" className="flex">
                       <a
@@ -131,7 +158,7 @@ const Navbar = () => {
                   </>
                 )}
                 {
-                  role === "User" || hrRole[0] === "HR_Request" && <>
+                  role === "User" && <>
                   {" "}
                   <NavLink to="/joinasemployee" className="flex">
                     <a
@@ -322,40 +349,40 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] w-96 right-0 p-2 shadow"
+              className="menu menu-sm justify-start flex flex-col dropdown-content bg-base-100 rounded-box z-[50] w-full right-4 pl-4 pr-40 shadow"
             >
-              <li className="flex">
+              <li className="flex justify-start">
                 <a
                   rel="noopener noreferrer"
                   href="#"
-                  className="flex items-center px-4 -mb-1 border-b-2 dark:border- dark:text-violet-600 dark:border-violet-600"
+                  className="flex items-center justify-start px-4 -mb-1 border-b-2 dark:border- dark:text-violet-600 dark:border-violet-600"
                 >
                   Link
                 </a>
               </li>
-              <li className="flex">
+              <li className="flex justify-start">
                 <a
                   rel="noopener noreferrer"
                   href="#"
-                  className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
+                  className="flex items-center justify-start px-4 -mb-1 border-b-2 dark:border-"
                 >
                   Link
                 </a>
               </li>
-              <li className="flex">
+              <li className="flex justify-start">
                 <a
                   rel="noopener noreferrer"
                   href="#"
-                  className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
+                  className="flex items-center justify-start px-4 -mb-1 border-b-2 dark:border-"
                 >
                   Link
                 </a>
               </li>
-              <li className="flex">
+              <li className="flex justify-start">
                 <a
                   rel="noopener noreferrer"
                   href="#"
-                  className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
+                  className="flex items-center justify-start px-4 -mb-1 border-b-2 dark:border-"
                 >
                   Link
                 </a>

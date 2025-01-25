@@ -20,7 +20,7 @@ const useEmployee = () => {
     },
   });
 
-  console.log(role, "this is role point")
+  // console.log(role, "this is role point")
   return [role, isLoading];
 };
 

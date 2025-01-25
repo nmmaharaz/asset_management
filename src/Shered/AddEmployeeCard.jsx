@@ -12,7 +12,6 @@ const AddEmployeeCard = ({employee, refetch, reset}) => {
         hr_email: user?.email,
         role: "Employee"
       }
-      console.log("this is email", user?.email)
       const {data} = await axios.patch(`${import.meta.env.VITE_API_URL}/user/${email}`,updateUser)
       refetch()
       reset()

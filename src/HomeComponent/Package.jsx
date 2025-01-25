@@ -1,9 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { axiosSecure } from "../Hook/useAxiosSecure";
+import useAuth from "../Hook/useAtuh";
 
 const Package = () => {
+	const {user} = useAuth()
+	const navigate = useNavigate()
 	const handlePayment = async(money)=>{
-		console.log(money, "money")
+		const updatePackage = {
+			package: money
+		}
+		await axiosSecure.patch(`/hrUpdatePackage/${user?.email}`, updatePackage);
+		navigate("/payment")
 	}
+
+
   return (
     <div>
       <section className="py-20 bg-gray-100 text-gray-800">
@@ -40,7 +50,7 @@ const Package = () => {
 							<span>Tristique enim nec</span>
 						</li>
 					</ul>
-					<Link to="/payment" onClick={()=>handlePayment(5)} className="inline-block w-full px-5 py-3 font-semibold tracking-wider text-center rounded bg-violet-600 text-gray-50">Buy Now</Link>
+					<Link onClick={()=>handlePayment(5)} className="inline-block w-full px-5 py-3 font-semibold tracking-wider text-center rounded bg-violet-600 text-gray-50">Buy Now</Link>
 				</div>
 			</div>
 			<div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
@@ -78,7 +88,7 @@ const Package = () => {
 							<span>Aenean et lectus blandit</span>
 						</li>
 					</ul>
-					<Link to="/payment" onClick={()=>handlePayment(10)} className="inline-block w-full px-5 py-3 font-bold tracking-wider text-center rounded bg-gray-100 text-violet-600">Buy Now</Link>
+					<Link onClick={()=>handlePayment(10)} className="inline-block w-full px-5 py-3 font-bold tracking-wider text-center rounded bg-gray-100 text-violet-600">Buy Now</Link>
 				</div>
 			</div>
 			<div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
@@ -122,7 +132,7 @@ const Package = () => {
 							<span>Vivamus ut lectus ex</span>
 						</li>
 					</ul>
-					<Link to="/payment" onClick={()=>handlePayment(15)} className="inline-block w-full px-5 py-3 font-semibold tracking-wider text-center rounded bg-violet-600 text-gray-50">Buy Now</Link>
+					<Link onClick={()=>handlePayment(15)} className="inline-block w-full px-5 py-3 font-semibold tracking-wider text-center rounded bg-violet-600 text-gray-50">Buy Now</Link>
 				</div>
 			</div>
 		</div>

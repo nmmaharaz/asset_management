@@ -6,7 +6,8 @@ import axios from "axios";
 import { useState } from "react";
 import AddEmployeeCard from "../Shered/AddEmployeeCard";
 import { axiosSecure } from "../Hook/useAxiosSecure";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import HRReqest from "../Hook/HRRequest";
 // import PackagePayment from "./PackagePayment";
 // import AddEmployeeCard from "../Shered/AddEmployeeCard";
 const AddAnEmployee = () => {
