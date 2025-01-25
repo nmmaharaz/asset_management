@@ -2,8 +2,6 @@ import axios from "axios";
 import useAuth from "./useAtuh";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "./useAxiosSecure";
-// import useAxiosPublic from "./useAxiosPublic";
-// import Loading from "../Loading/Loading";
 
 const useHRRole = () => {
   // const axiosPublic = useAxiosPublic()

@@ -9,7 +9,7 @@ const useEmployee = () => {
   const axiosSecure = useAxiosSecure()
   const { loading, user } = useAuth();
   const { data: role , isLoading } = useQuery({
-    queryKey: ["Erole", user?.email],
+    queryKey: ["emrole", user?.email],
     enabled: !loading && !!user?.email,
     queryFn: async () => {
       const { data } = await axiosSecure(

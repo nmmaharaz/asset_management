@@ -2,9 +2,8 @@ import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../Hook/useAtuh";
 import useEmployee from "../../Hook/useEployee";
 import useHRRole from "../../Hook/useHRRole";
-import { useState } from "react";
-import Loading from "../../Loading/Loading";
 import "./Navbar.css"
+import Loading from "../../Loading/Loading";
 
 const Navbar = () => {
   const { user, loading, log0ut } = useAuth();
@@ -14,7 +13,7 @@ const Navbar = () => {
   const handleLogout = () => {
     log0ut();
   };
-  // if(loading) return<Loading></Loading>
+  if(loading) return <Loading></Loading>
   return (
     <div>
       <header className="p-4 dark:bg-gray-100 dark:text-gray-800">
@@ -36,8 +35,12 @@ const Navbar = () => {
             </svg>
           </a>
 
-          <ul className="items-stretch hidden space-x-3 lg:flex">
-            <NavLink className=" hoovereffect">
+          <ul className=" items-center hidden space-x-7 lg:flex">
+            <NavLink to="/" className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }>
                 Home
             </NavLink>
 
@@ -46,137 +49,149 @@ const Navbar = () => {
                 {role === "Employee" && (
                   <>
                     {" "}
-                    <NavLink to="/myteam" className="hoovereffect">
+                    <NavLink to="/myteam" className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }>
                         My Team
                     </NavLink>
-                    <NavLink to="/myrequest" className="hoovereffect">
+                    <NavLink to="/myrequest" className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }>
                         Request For an Assets
                     </NavLink>
-                    <NavLink to="/myassets" className="hoovereffect">
+                    <NavLink to="/myassets" className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }>
                         My Assets
                     </NavLink>
                   </>
                 )}
                 {hrRole[0] === "HR"  && (
                   <>
-                    <NavLink to="/myemployeelist" className="flex">
-                      <a
-                        rel="noopener noreferrer"
-                        href="#"
-                        className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
-                      >
+                    <NavLink to="/myemployeelist" className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }>
+                     
                         My Employee List
-                      </a>
+                      
                     </NavLink>
 
-                    <NavLink to="/assetlist" className="flex">
-                      <a
-                        rel="noopener noreferrer"
-                        href="#"
-                        className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
-                      >
+                    <NavLink to="/assetlist" className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }>
+                     
                         Assets List
-                      </a>
+                      
                     </NavLink>
-                    <NavLink to="/addasset" className="flex">
-                      <a
-                        rel="noopener noreferrer"
-                        href="#"
-                        className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
-                      >
+                    <NavLink to="/addasset" className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }>
+                     
                         Add an Assets
-                      </a>
+                      
                     </NavLink>
-                    <NavLink to="/allrequest" className="flex">
-                      <a
-                        rel="noopener noreferrer"
-                        href="#"
-                        className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
-                      >
+                    <NavLink to="/allrequest" className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }>
+                     
                         All Requests
-                      </a>
+                      
                     </NavLink>
-                    <NavLink to="/addemployee" className="flex">
-                      <a
-                        rel="noopener noreferrer"
-                        href="#"
-                        className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
-                      >
+                    <NavLink to="/addemployee" className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }>
+                     
                         Add an Employee
-                      </a>
+                      
                     </NavLink>
                   </>
                 )}
                 {hrRole[0] === "HR_Request" && (
                   <>
-                    <NavLink to="/myemployeelist" className="flex">
-                      <a
-                        rel="noopener noreferrer"
-                        href="#"
-                        className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
-                      >
+                    <NavLink to="/myemployeelist" className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }>
+                     
                         My Employee List
-                      </a>
+                      
                     </NavLink>
 
-                    <NavLink to="/assetlist" className="flex">
-                      <a
-                        rel="noopener noreferrer"
-                        href="#"
-                        className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
-                      >
+                    <NavLink to="/assetlist" className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }>
+                     
                         Assets List
-                      </a>
+                      
                     </NavLink>
-                    <NavLink to="/addasset" className="flex">
-                      <a
-                        rel="noopener noreferrer"
-                        href="#"
-                        className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
-                      >
+                    <NavLink to="/addasset" className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }>
+                     
                         Add an Assets
-                      </a>
+                      
                     </NavLink>
-                    <NavLink to="/allrequest" className="flex">
-                      <a
-                        rel="noopener noreferrer"
-                        href="#"
-                        className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
-                      >
+                    <NavLink to="/allrequest" className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }>
+                     
                         All Requests
-                      </a>
+                      
                     </NavLink>
-                    <NavLink to="/addemployee" className="flex">
-                      <a
-                        rel="noopener noreferrer"
-                        href="#"
-                        className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
-                      >
+                    <NavLink to="/addemployee" className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }>
+                     
                         Add an Employee
-                      </a>
+                      
                     </NavLink>
                   </>
                 )}
                 {
                   role === "User" && <>
                   {" "}
-                  <NavLink to="/joinasemployee" className="flex">
-                    <a
-                      rel="noopener noreferrer"
-                      href="#"
-                      className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
-                    >
+                  <NavLink to="/joinasemployee" className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }>
+                
                       Join as Employee
-                    </a>
+                    
                   </NavLink>
-                  <NavLink to="/joinashrmanager" className="flex">
-                    <a
-                      rel="noopener noreferrer"
-                      href="#"
-                      className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
-                    >
+                  <NavLink to="/joinashrmanager" className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }>
+                    
                       Join as Join as HR Manager
-                    </a>
+                    
                   </NavLink>
                 </>
                 }
@@ -184,105 +199,108 @@ const Navbar = () => {
             ) : 
               <>
                 {" "}
-                <NavLink to="/joinasemployee" className="flex">
-                  <a
-                    rel="noopener noreferrer"
-                    href="#"
-                    className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
-                  >
+                <NavLink to="/joinasemployee" className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }>
+                 
                     Join as Employee
-                  </a>
+                  
                 </NavLink>
-                <NavLink to="/joinashrmanager" className="flex">
-                  <a
-                    rel="noopener noreferrer"
-                    href="#"
-                    className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
-                  >
+                <NavLink to="/joinashrmanager" className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }>
+                  
                     Join as Join as HR Manager
-                  </a>
+                  
                 </NavLink>
               </>
             }
 
             {/* {role === "Employee"  &&
               <>
-                <NavLink to="/myteam" className="flex">
-                  <a
+                <NavLink to="/myteam" className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }               <a
                     rel="noopener noreferrer"
                     href="#"
-                    className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
+                    className="hoovereffect items-center px-4 -mb-1 border-b-2 dark:border-"
                   >
                     My Team
-                  </a>
+                  
                 </NavLink>
-                <NavLink to="/myrequest" className="flex">
+                <NavLink to="/myrequest" className="hoovereffect">
                   <a
                     rel="noopener noreferrer"
                     href="#"
-                    className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
+                    className="hoovereffect items-center px-4 -mb-1 border-b-2 dark:border-"
                   >
                     Request For an Assets
-                  </a>
+                  
                 </NavLink>
-                <NavLink to="/myassets" className="flex">
+                <NavLink to="/myassets" className="hoovereffect">
                   <a
                     rel="noopener noreferrer"
                     href="#"
-                    className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
+                    className="hoovereffect items-center px-4 -mb-1 border-b-2 dark:border-"
                   >
                     My Assets
-                  </a>
+                  
                 </NavLink>
               </>
             }
             {hrRole[0] =="HR" &&
               <>
-                <NavLink to="/myemployeelist" className="flex">
+                <NavLink to="/myemployeelist" className="hoovereffect">
                   <a
                     rel="noopener noreferrer"
                     href="#"
-                    className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
+                    className="hoovereffect items-center px-4 -mb-1 border-b-2 dark:border-"
                   >
                     My Employee List
-                  </a>
+                  
                 </NavLink>
 
-                <NavLink to="/assetlist" className="flex">
+                <NavLink to="/assetlist" className="hoovereffect">
                   <a
                     rel="noopener noreferrer"
                     href="#"
-                    className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
+                    className="hoovereffect items-center px-4 -mb-1 border-b-2 dark:border-"
                   >
                     Assets List
-                  </a>
+                  
                 </NavLink>
-                <NavLink to="/addasset" className="flex">
+                <NavLink to="/addasset" className="hoovereffect">
                   <a
                     rel="noopener noreferrer"
                     href="#"
-                    className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
+                    className="hoovereffect items-center px-4 -mb-1 border-b-2 dark:border-"
                   >
                     Add an Assets
-                  </a>
+                  
                 </NavLink>
-                <NavLink to="/allrequest" className="flex">
+                <NavLink to="/allrequest" className="hoovereffect">
                   <a
                     rel="noopener noreferrer"
                     href="#"
-                    className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
+                    className="hoovereffect items-center px-4 -mb-1 border-b-2 dark:border-"
                   >
                     All Requests
-                  </a>
+                  
                 </NavLink>
-                <NavLink to="/addemployee" className="flex">
+                <NavLink to="/addemployee" className="hoovereffect">
                   <a
                     rel="noopener noreferrer"
                     href="#"
-                    className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
+                    className="hoovereffect items-center px-4 -mb-1 border-b-2 dark:border-"
                   >
                     Add an Employee
-                  </a>
+                  
                 </NavLink>
               </>
              }
