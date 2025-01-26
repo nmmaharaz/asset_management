@@ -3,6 +3,7 @@ import useAuth from "../Hook/useAtuh";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import EmployeeAssets from "./EmployeeComponent/EmployeeAssets";
+import { axiosSecure } from "../Hook/useAxiosSecure";
 
 const MyAssets = () => {
   const { user } = useAuth();
@@ -12,8 +13,8 @@ const MyAssets = () => {
   const { data: myAssistData, refetch: reset } = useQuery({
     queryKey: ["myAssistData"],
     queryFn: async () => {
-      const { data } = await axios(
-        `${import.meta.env.VITE_API_URL}/allasset/${user?.email}`
+      const { data } = await axiosSecure(
+        `/allasset/${user?.email}`
       );
       setLoading(false);
       return data;

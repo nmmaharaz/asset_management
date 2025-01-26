@@ -1,6 +1,8 @@
 import axios from "axios";
 import EmployeeRequest from "./EmployeeRequest";
 import { toast } from "react-toastify";
+import { axiosSecure } from "../Hook/useAxiosSecure";
+import Swal from "sweetalert2";
 const Request = ({ request, refetch }) => {
   const {
     _id,
@@ -17,8 +19,8 @@ const Request = ({ request, refetch }) => {
       request_status: "Returned",
     };
     try {
-      const { data } = await axios.patch(
-        `${import.meta.env.VITE_API_URL}/request/${_id}`,
+      const { data } = await axiosSecure.patch(
+        `/request/${_id}`,
         updateData
       );
       console.log(data, "o data")
@@ -28,6 +30,18 @@ const Request = ({ request, refetch }) => {
       console.log(error);
     }
   };
+  const handleDelete = async()=>{
+   await axiosSecure.delete(
+      `/request/${_id}`);
+      refetch();
+      Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your work has been saved",
+                showConfirmButton: false,
+                timer: 1000,
+              });
+  }
   return (
     <div className="flex shadow-md overflow-hidden rounded-lg dark:bg-gray-50 dark:text-gray-800">
       <div className="flex items-center justify-center px-4 bg-violet-600 text-gray-100">
@@ -56,7 +70,7 @@ const Request = ({ request, refetch }) => {
             {request_status}
           </button>
           {request_status == "Pending" ? (
-            <button className="text-right btn bg-purple-500 text-white ml-5">
+            <button onClick={handleDelete} className="text-right btn bg-purple-500 text-white ml-5">
               Cencel
             </button>
           ) : (

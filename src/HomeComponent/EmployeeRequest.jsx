@@ -2,6 +2,7 @@ import axios from "axios";
 import { Modal } from "flowbite-react";
 import useAuth from "../Hook/useAtuh";
 import { format } from "date-fns";
+import Swal from "sweetalert2";
 // import { useRef } from "react";
 
 const EmployeeRequest = ({ asset, reset, openModal, setOpenModal }) => {
@@ -32,6 +33,14 @@ const EmployeeRequest = ({ asset, reset, openModal, setOpenModal }) => {
       `${import.meta.env.VITE_API_URL}/asset_request`,
       assetRequest
     );
+    Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Your work has been saved",
+              showConfirmButton: false,
+              timer: 1000,
+            });
+    setOpenModal(false)
   };
   return (
     <Modal show={openModal} size="md" onClose={() => setOpenModal(false)} popup>
