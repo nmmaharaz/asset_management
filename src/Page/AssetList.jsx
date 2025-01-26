@@ -9,16 +9,22 @@ import { axiosSecure } from "../Hook/useAxiosSecure";
 const AssetList = () => {
   const { user, loading } = useAuth();
   const [loader, setLoading] = useState(true);
-  const [search, setSearch] = useState("")
-  console.log(search)
+  const [search, setSearch] = useState("");
+  const [type, setAssetType] = useState("")
+  const [quentity, setQuentity] = useState("")
+  // console.log(quentity, "assets")
+  // console.log(search);
+  // const select = valuecl.value
   const {
     data: allAssets = [],
     isLoading,
     refetch: reload,
   } = useQuery({
-    queryKey: ["allAssets", search],
+    queryKey: ["allAssets", search, type],
     queryFn: async () => {
-      const { data } = await axiosSecure(`/allassets/${user?.email}?search=${search}`);
+      const { data } = await axiosSecure(
+        `/allassets/${user?.email}?search=${search}&type=${type}`
+      );
       setLoading(false);
       return data;
     },
@@ -28,9 +34,10 @@ const AssetList = () => {
   return (
     <div className="w-10/12 mx-auto">
       {allAssets?.length}
-      <div className="mb-4 bg-white p-4 shadow-md rounded-t-xl">
+      <div className="mb-4 bg-white flex flex-col justify-between sm:flex-row p-4 shadow-md rounded-t-xl">
+        <div>
         <div className="relative">
-        <span className="absolute inset-y-0 left-0 flex items-center pl-2">
+          <span className="absolute inset-y-0 left-0 flex items-center pl-2">
             <button
               type="submit"
               title="Search"
@@ -48,12 +55,30 @@ const AssetList = () => {
           <input
             type="search"
             name="Search"
-            onChange={(e)=>setSearch(e.target.value)}
+            onChange={(e) => setSearch(e.target.value)}
             placeholder="Search..."
             className="w-32 py-2 pl-10 text-sm rounded-md sm:w-auto focus:outline-none dark:bg-gray-100 dark:text-gray-800 focus:dark:bg-gray-50"
           />
-          
         </div>
+        </div>
+      
+        <div className="flex flex-row space-x-4">
+        <select defaultValue={quentity} onChange={(e)=>setQuentity(e.target.value)} className="select select-bordered w-full max-w-xs">
+          <option value="">
+            stock
+          </option>
+          <option value={1}>available</option>
+          <option value={0}>out-of-stock</option>
+        </select>
+        <select defaultValue={type} onChange={(e)=>setAssetType(e.target.value)} className="select select-bordered w-full max-w-xs">
+          <option value="">
+            assets type
+          </option>
+          <option>Returnable</option>
+          <option>Non-returnable</option>
+        </select>
+        </div>
+     
       </div>
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {allAssets?.map((asset) => (
