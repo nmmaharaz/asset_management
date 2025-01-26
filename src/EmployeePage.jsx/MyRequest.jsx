@@ -11,7 +11,6 @@ const MyRequest = () => {
   const [type, setAssetType] = useState("");
   const [status, setStatus] = useState("")
 
-  console.log(search, type, status, "this is html")
   const [loading, setLoading] = useState(true);
   const { data: requestData = [], refetch } = useQuery({
     queryKey: ["requestData",search, type, status],

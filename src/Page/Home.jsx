@@ -1,3 +1,4 @@
+import AboutSection from "../HomeComponent/AboutSection";
 import Banner from "../HomeComponent/Banner";
 import Package from "../HomeComponent/Package";
 import useAuth from "../Hook/useAtuh";
@@ -12,6 +13,7 @@ const Home = () => {
             {user?.email}
             {user?.name}
             <Banner></Banner>
+            <AboutSection></AboutSection>
             {
                hrRole[0] === "HR_Request" && <Package></Package>
             }
