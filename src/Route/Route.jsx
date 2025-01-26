@@ -16,6 +16,7 @@ import MyTeam from "../EmployeePage.jsx/MyTeam";
 import AllRequest from "../Page/allrequest";
 import PackagePayment from "../Page/PackagePayment";
 import Package from "../HomeComponent/Package";
+import Profile from "../Profile/Profile";
 
 const router = createBrowserRouter([
   {
@@ -110,6 +111,10 @@ const router = createBrowserRouter([
         path: "/login",
         element: <Login></Login>,
       },
+      {
+        path:"/profile",
+        element: <Profile></Profile>
+      }
     ],
   },
  

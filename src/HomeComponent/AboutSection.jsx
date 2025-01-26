@@ -4,8 +4,8 @@ import { IoMdEye } from "react-icons/io";
 import { MdManageAccounts } from "react-icons/md";
 const AboutSection = () => {
   return (
-    <div className="my-6 lg:my-12">
-      <p className="text-4xl text-center font-bold text-black">
+    <div className="bg-[#fef3ee] py-6 lg:py-16">
+      <p className="text-2xl w-9/12 mx-auto sm:text-4xl text-center font-bold text-black">
       SmartHR Providing You Best Features
       </p>
       <p className="text-gray-500 mt-4 text-center w-10/12 mx-auto lg:w-7/12">Looking to automate HR management template? SmartHR is for you. This is a project management and HR automation template that can be used for the HRMS system.</p>
@@ -31,7 +31,7 @@ const AboutSection = () => {
           </div>
           
         </div>
-        <div className="lg:w-4/12">
+        <div className="lg:w-4/12 mx-7 my-4 lg:my-0 lg:mx-0">
           <img className="w-full h-full" src="https://i.ibb.co.com/pXkrm15/feature.webp" alt="" />
         </div>
         <div className="lg:w-3/12 lg:ml-12 text-center lg:text-left">

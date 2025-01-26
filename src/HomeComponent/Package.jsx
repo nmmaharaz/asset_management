@@ -1,144 +1,130 @@
-import { Link, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import { axiosSecure } from "../Hook/useAxiosSecure";
 import useAuth from "../Hook/useAtuh";
+import { CheckCircle, XCircle } from "lucide-react";
 
 const Package = () => {
-	const {user} = useAuth()
-	const navigate = useNavigate()
-	const handlePayment = async(money)=>{
-		const updatePackage = {
-			package: money
-		}
-		await axiosSecure.patch(`/hrUpdatePackage/${user?.email}`, updatePackage);
-		navigate("/payment")
-	}
-
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  const handlePayment = async (money) => {
+	console.log(money, "this is money")
+    const updatePackage = {
+      package: money,
+    };
+    await axiosSecure.patch(`/hrUpdatePackage/${user?.email}`, updatePackage);
+    navigate("/payment");
+  };
 
   return (
-    <div>
-      <section className="py-20 bg-gray-100 text-gray-800">
-	<div className="container px-4 mx-auto">
-		<div className="max-w-2xl mx-auto mb-16 text-center">
-			<span className="font-bold tracking-wider uppercase text-violet-600">Pricing</span>
-			<h2 className="text-4xl font-bold lg:text-5xl">Choose your best plan</h2>
-		</div>
-		<div className="flex flex-wrap items-stretch -mx-4">
-			<div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
-				<div className="flex flex-grow flex-col p-6 space-y-6 rounded shadow sm:p-8 bg-gray-50">
-					<div className="space-y-2">
-						<h4 className="text-2xl font-bold">Beginner</h4>
-						<span className="text-6xl font-bold">Free</span>
-					</div>
-					<p className="mt-3 leading-relaxed text-gray-600">Etiam ac convallis enim, eget euismod dolor.</p>
-					<ul className="flex-1 mb-6 text-gray-600">
-						<li className="flex mb-2 space-x-2">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="flex-shrink-0 w-6 h-6 text-violet-600">
-								<path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
-							</svg>
-							<span>Aenean quis</span>
-						</li>
-						<li className="flex mb-2 space-x-2">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="flex-shrink-0 w-6 h-6 text-violet-600">
-								<path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
-							</svg>
-							<span>Morbi semper</span>
-						</li>
-						<li className="flex mb-2 space-x-2">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="flex-shrink-0 w-6 h-6 dark:text-violet-600">
-								<path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
-							</svg>
-							<span>Tristique enim nec</span>
-						</li>
-					</ul>
-					<Link onClick={()=>handlePayment(5)} className="inline-block w-full px-5 py-3 font-semibold tracking-wider text-center rounded bg-violet-600 text-gray-50">Buy Now</Link>
-				</div>
-			</div>
-			<div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
-				<div className="flex flex-grow flex-col p-6 space-y-6 rounded shadow sm:p-8 bg-violet-600 text-gray-50">
-					<div className="space-y-2">
-						<h4 className="text-2xl font-bold">Pro</h4>
-						<span className="text-6xl font-bold">$24
-							<span className="text-sm tracking-wide">/month</span>
-						</span>
-					</div>
-					<p className="leading-relaxed">Morbi cursus ut sapien sit amet consectetur.</p>
-					<ul className="flex-1 space-y-2">
-						<li className="flex items-center space-x-2">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="flex-shrink-0 w-6 h-6">
-								<path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
-							</svg>
-							<span>Everything in Free</span>
-						</li>
-						<li className="flex items-center space-x-2">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="flex-shrink-0 w-6 h-6">
-								<path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
-							</svg>
-							<span>Phasellus tellus</span>
-						</li>
-						<li className="flex items-center space-x-2">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="flex-shrink-0 w-6 h-6">
-								<path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
-							</svg>
-							<span>Praesent faucibus</span>
-						</li>
-						<li className="flex items-center space-x-2">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="flex-shrink-0 w-6 h-6">
-								<path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
-							</svg>
-							<span>Aenean et lectus blandit</span>
-						</li>
-					</ul>
-					<Link onClick={()=>handlePayment(10)} className="inline-block w-full px-5 py-3 font-bold tracking-wider text-center rounded bg-gray-100 text-violet-600">Buy Now</Link>
-				</div>
-			</div>
-			<div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
-				<div className="flex flex-grow flex-col p-6 space-y-6 rounded shadow sm:p-8 bg-gray-50">
-					<div className="space-y-2">
-						<h4 className="text-2xl font-bold">Team</h4>
-						<span className="text-6xl font-bold">$72
-							<span className="text-sm tracking-wide">/month</span>
-						</span>
-					</div>
-					<p className="leading-relaxed text-gray-600">Phasellus ultrices bibendum nibh in vehicula.</p>
-					<ul className="space-y-2 text-gray-600">
-						<li className="flex items-start space-x-2">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="flex-shrink-0 w-6 h-6 text-violet-600">
-								<path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
-							</svg>
-							<span>Everything in Pro</span>
-						</li>
-						<li className="flex items-start space-x-2">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="flex-shrink-0 w-6 h-6 text-violet-600">
-								<path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
-							</svg>
-							<span>Fusce sem ligula</span>
-						</li>
-						<li className="flex items-start space-x-2">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="flex-shrink-0 w-6 h-6 text-violet-600">
-								<path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
-							</svg>
-							<span>Curabitur dictum</span>
-						</li>
-						<li className="flex items-start space-x-2">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="flex-shrink-0 w-6 h-6 text-violet-600">
-								<path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
-							</svg>
-							<span>Duis odio eros</span>
-						</li>
-						<li className="flex items-start space-x-2">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="flex-shrink-0 w-6 h-6 text-violet-600">
-								<path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
-							</svg>
-							<span>Vivamus ut lectus ex</span>
-						</li>
-					</ul>
-					<Link onClick={()=>handlePayment(15)} className="inline-block w-full px-5 py-3 font-semibold tracking-wider text-center rounded bg-violet-600 text-gray-50">Buy Now</Link>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+   <div className="py-6 lg:py-16">
+	<p className="text-2xl w-9/12 mx-auto sm:text-4xl text-center font-bold text-black">
+      SmartHR Providing You Best Features
+      </p>
+      <p className="text-gray-500 mt-4 text-center w-10/12 mx-auto lg:w-7/12">Looking to automate HR management template? SmartHR is for you. This is a project management and HR automation template that can be used for the HRMS system.</p>
+	 <div className="w-11/12 mt-12 mx-auto">
+     <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
+	 <div className="p-6 bg-white rounded-2xl shadow-md border border-gray-200">
+        <h2 className="text-xl font-bold text-center text-gray-800">
+          Basic
+        </h2>
+        <div className="flex flex-col items-center mt-4">
+          <div className="relative flex items-center justify-center w-24 h-24 bg-orange-50 rounded-full">
+            <span className="text-4xl font-bold text-orange-500">$5</span>
+          </div>
+          <p className="mt-2 text-center text-sm font-medium text-gray-500">
+		  Get Start
+          </p>
+        </div>
+        <div className="mt-6">
+          <h3 className="mb-3 font-medium text-gray-700">Includes:</h3>
+          <ul className="space-y-2">
+            <li className="flex items-center text-sm text-gray-700">
+              <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
+              Centralized employee database
+            </li>
+            <li className="flex items-center text-sm text-gray-700">
+              <CheckCircle className="w-5 h-5 text-green-500 mr-2" />Up to 5 employees
+            </li>
+            <li className="flex items-center text-sm text-gray-700">
+              <CheckCircle className="w-5 h-5 text-green-500 mr-2" />Suitable for businesses with up to 5 employees.
+            </li>
+          </ul>
+        </div>
+        <div className="mt-6 text-center">
+          <button onClick={()=>handlePayment(5)} className="w-full px-6 py-3 font-semibold text-white bg-orange-500 rounded-lg shadow hover:bg-orange-600">
+            Buy Now
+          </button>
+        </div>
+      </div>
+	  <div className="p-6 bg-white rounded-2xl shadow-md border border-gray-200">
+        <h2 className="text-xl font-bold text-center text-gray-800">
+          Standard
+        </h2>
+        <div className="flex flex-col items-center mt-4">
+          <div className="relative flex items-center justify-center w-24 h-24 bg-orange-50 rounded-full">
+            <span className="text-4xl font-bold text-orange-500">$8</span>
+          </div>
+          <p className="mt-2 text-center text-sm font-medium text-gray-500">
+		  Get Start
+          </p>
+        </div>
+        <div className="mt-6">
+          <h3 className="mb-3 font-medium text-gray-700">Includes:</h3>
+          <ul className="space-y-2">
+            <li className="flex items-center text-sm text-gray-700">
+              <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
+              Centralized employee database
+            </li>
+            <li className="flex items-center text-sm text-gray-700">
+              <CheckCircle className="w-5 h-5 text-green-500 mr-2" />Up to 5 employees
+            </li>
+            <li className="flex items-center text-sm text-gray-700">
+              <CheckCircle className="w-5 h-5 text-green-500 mr-2" />Suitable for businesses with up to 5 employees.
+            </li>
+          </ul>
+        </div>
+        <div className="mt-6 text-center">
+          <button onClick={()=>handlePayment(8)} className="w-full px-6 py-3 font-semibold text-white bg-orange-500 rounded-lg shadow hover:bg-orange-600">
+            Buy Now
+          </button>
+        </div>
+      </div>
+	  <div className="p-6 bg-white rounded-2xl shadow-md border border-gray-200">
+        <h2 className="text-xl font-bold text-center text-gray-800">
+		Premium
+        </h2>
+        <div className="flex flex-col items-center mt-4">
+          <div className="relative flex items-center justify-center w-24 h-24 bg-orange-50 rounded-full">
+            <span className="text-4xl font-bold text-orange-500">$15</span>
+          </div>
+          <p className="mt-2 text-center text-sm font-medium text-gray-500">
+            Get Start
+          </p>
+        </div>
+        <div className="mt-6">
+          <h3 className="mb-3 font-medium text-gray-700">Includes:</h3>
+		  <ul className="space-y-2">
+            <li className="flex items-center text-sm text-gray-700">
+              <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
+              Centralized employee database
+            </li>
+            <li className="flex items-center text-sm text-gray-700">
+              <CheckCircle className="w-5 h-5 text-green-500 mr-2" />Up to 20 employees
+            </li>
+            <li className="flex items-center text-sm text-gray-700">
+              <CheckCircle className="w-5 h-5 text-green-500 mr-2" />Suitable for businesses with up to 20 employees.
+            </li>
+          </ul>
+        </div>
+        <div className="mt-6 text-center">
+          <button onClick={()=>handlePayment(15)} className="w-full px-6 py-3 font-semibold text-white bg-orange-500 rounded-lg shadow hover:bg-orange-600">
+            Buy Now
+          </button>
+        </div>
+      </div>
+	 </div>
     </div>
+   </div>
   );
 };
 
