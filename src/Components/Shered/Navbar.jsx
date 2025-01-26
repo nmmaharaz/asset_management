@@ -6,16 +6,40 @@ import "./Navbar.css";
 import Loading from "../../Loading/Loading";
 import { LogIn, LogOut } from "lucide-react";
 import logo from "../../assets/safeasset.png"
+import { axiosSecure } from "../../Hook/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import { axiosPublic } from "../../Hook/useAxiosPublic";
 
 const Navbar = () => {
-  const { user, loading, log0ut } = useAuth();
+  const { user, loading, setLoading, log0ut } = useAuth();
+  const email = user?.email
   const [role] = useEmployee();
   const hrRole = useHRRole();
   console.log(hrRole[0], "hellow");
   const handleLogout = () => {
     log0ut();
   };
-  if(loading) return <Loading></Loading>
+  const { data: hrData = [], refetch } = useQuery({
+    queryKey: ["hrData", user?.email],
+    queryFn: async () => {
+      const { data } = await axiosPublic(
+        `/hrCompany/${user?.email}`
+      );
+      return data;
+    },
+  });
+  const { data: userData = [],} = useQuery({
+    queryKey: ["userData"],
+    queryFn: async () => {
+      const { data } = await axiosPublic(
+        `/employeeCompany/${email}`
+      );
+      return data;
+    },
+  });
+  console.log(userData, "data")
+  // if(loading) return <Loading></Loading>
+
   return (
     <div className="sticky z-50 top-0">
       <header className="p-4 bg-gray-100 text-gray-800">
@@ -27,7 +51,13 @@ const Navbar = () => {
             className="flex items-center p-2"
           >
               {
-                (!user?.email || role == "User" || hrRole[0] === "HR_Request") && (<img className="h-14" src={logo} alt="" />)
+                (!user?.email || role == "User" || hrRole[0] === "HR_Request") && (<img className="h-12" src={logo} alt="" />)
+              }
+              {
+                hrRole[0] === "HR" && <img className="h-12" src={hrData?.company_logo} alt="" />
+              }
+              {
+                role === "Employee" && <img className="h-12" src={userData?.company_logo} alt="" />
               }
           </a>
 

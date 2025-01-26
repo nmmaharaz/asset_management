@@ -22,8 +22,8 @@ const CheckoutForm = () => {
   const { data: HREmployee, refetch: reset } = useQuery({
     queryKey: ["HREmployee"],
     queryFn: async () => {
-      const { data } = await axios(
-        `${import.meta.env.VITE_API_URL}/totalPayment/${user?.email}`
+      const { data } = await axiosSecure(
+        `/totalPayment/${user?.email}`
       );
       setTimePrice(data.package);
       return data;
