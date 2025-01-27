@@ -13,8 +13,7 @@ const EmployeeRequest = ({ asset, reset, openModal, setOpenModal }) => {
   const handleSubmitRequest = async (e) => {
     e.preventDefault();
     const additional_rule = e.target.additional_rule.value;
-    const date = new Date();
-    const request_date = format(date, "dd/MM/yyyy");
+    const request_date  = new Date();
     console.log(additional_rule, "This is eta");
     const assetRequest = {
       asset_id: _id,

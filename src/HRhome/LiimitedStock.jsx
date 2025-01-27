@@ -15,7 +15,7 @@ const LiimitedStock = () => {
       });
     //   console.log("limited", limitedStock)
     return (
-        <div className="w-4/12 mt-8 mx-auto bg-white border border-gray-200 rounded-md">
+        <div className="w-11/12 sm:w-5/12 mx-auto bg-white border border-gray-200 rounded-md">
         {
             limitedStock?.map((stock)=><div className="flex justify-between items-center p-3 bg-[#fff6f2] border border-dotted border-gray-300 m-2" key={stock._id}>
                 <div>

@@ -15,14 +15,21 @@ const Returnable_non = () => {
       return data;
     },
   });
- 
+  const { data: NonReturnable = [] } = useQuery({
+    queryKey: ["NonReturnable", user?.email],
+    queryFn: async () => {
+      const { data } = await axiosSecure(`/nonreturn/${user?.email}`);
+      return data;
+    },
+  });
+
 
   const data = {
     labels: ["Returnable", "Non_Returnable"],
     datasets: [
       {
         label: "Votes",
-        data: [Returnable.length, 19,],
+        data: [Returnable?.length, NonReturnable?.length,],
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(54, 162, 235, 0.2)",
@@ -57,7 +64,7 @@ const Returnable_non = () => {
     },
   };
 
-  return <Pie data={data} options={options} />;
+  return <div className="sm:w-[400px]"><Pie data={data} options={options} /></div>;
 };
 
 export default Returnable_non;

@@ -24,7 +24,7 @@ const TopRequest = () => {
       console.log(topReq, "vai")
       if(loading) return<Loading></Loading>
     return (
-        <div className="w-4/12 mx-auto bg-white border border-gray-200 rounded-md">
+        <div className="w-11/12 md:w-5/12 mx-auto bg-white border border-gray-200 rounded-md">
             {
                 topReq?.map((req, index)=><div className="flex justify-between items-center p-3 bg-[#F8F9FA] border border-dotted border-gray-300 m-2" key={index}>
                     <div>
