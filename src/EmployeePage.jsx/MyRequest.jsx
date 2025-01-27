@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Request from "../HomeComponent/Request";
 import { axiosSecure } from "../Hook/useAxiosSecure";
+import RequestTable from "./EmployeeComponent/RequestTable";
 
 const MyRequest = () => {
   const { user } = useAuth();
@@ -24,7 +25,7 @@ const MyRequest = () => {
   });
   console.log(requestData, "requested data");
   return (
-    <div className="w-10/12 mx-auto my-7">
+    <div className="w-11/12 mx-auto my-7">
       <div className="mb-4 bg-white flex flex-col justify-between sm:flex-row p-4 shadow-md rounded-t-xl">
         <div>
           <div className="relative">
@@ -48,7 +49,7 @@ const MyRequest = () => {
               name="Search"
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search..."
-              className="w-32 py-2 pl-10 text-sm rounded-md sm:w-auto focus:outline-none dark:bg-gray-100 dark:text-gray-800 focus:dark:bg-gray-50"
+              className="w-32 border border-gray-200 py-3 pl-10 text-sm rounded-md sm:w-auto focus:outline-none dark:bg-gray-100 dark:text-gray-800 focus:dark:bg-gray-50"
             />
           </div>
         </div>
@@ -74,7 +75,7 @@ const MyRequest = () => {
           </select>
         </div>
       </div>
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+      {/* <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         {requestData?.map((request) => (
           <Request
             key={request._id}
@@ -82,6 +83,10 @@ const MyRequest = () => {
             refetch={refetch}
           ></Request>
         ))}
+      </div> */}
+
+      <div>
+        <RequestTable refetch={refetch} requestData={requestData}></RequestTable>
       </div>
     </div>
   );

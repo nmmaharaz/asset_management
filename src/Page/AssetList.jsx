@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Asset from "../Shered/Asset";
 import { axiosSecure } from "../Hook/useAxiosSecure";
+import AssetsListTable from "../Shered/AssetsListTable";
 
 const AssetList = () => {
   const { user, loading } = useAuth();
@@ -35,7 +36,6 @@ const AssetList = () => {
   console.log("Asset List", allAssets);
   return (
     <div className="w-10/12 mx-auto">
-      {allAssets?.length}
       <div className="mb-4 bg-white flex flex-col justify-between sm:flex-row p-4 shadow-md rounded-t-xl">
         <div>
           <div className="relative">
@@ -59,7 +59,7 @@ const AssetList = () => {
               name="Search"
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search..."
-              className="w-32 py-2 pl-10 text-sm rounded-md sm:w-auto focus:outline-none dark:bg-gray-100 dark:text-gray-800 focus:dark:bg-gray-50"
+              className="w-32 border border-gray-200 py-3 pl-10 text-sm rounded-md sm:w-auto focus:outline-none dark:bg-gray-100 dark:text-gray-800 focus:dark:bg-gray-50"
             />
           </div>
         </div>
@@ -97,11 +97,13 @@ const AssetList = () => {
         </div>
       </div>
       <div className="bg-white p-4 rounded-b-xl">
-        <div className=" grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        {/* <div className=" grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {allAssets?.map((asset) => (
             <Asset asset={asset} reload={reload} key={asset._id}></Asset>
           ))}
-        </div>
+        </div> */}
+
+        <AssetsListTable allAssets={allAssets} reload={reload}></AssetsListTable>
       </div>
     </div>
   );

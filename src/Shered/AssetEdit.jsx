@@ -11,17 +11,8 @@ const AssetEdit = ({ setOpenModal, openModal, reload, asset }) => {
   const { _id, product_name, product_type, product_quantity, added_date } =
     asset || [];
 
-  const parsedDate = parse(added_date, "dd/MM/yyyy", new Date());
-  const dateWithTime = new Date(parsedDate);
-  dateWithTime.setHours(23, 44, 15);
-  const currentTime = format(
-    dateWithTime,
-    "EEE MMM dd yyyy HH:mm:ss 'GMT+0600' (zzzz)"
-  );
-  // console.log(formattedDate, "this is");
-  const [startDate, setStartDate] = useState(currentTime);
-  // console.log(startDate, "ami startsfd data")
-  const [productType, setProductType] = useState("");
+    const [startDate, setStartDate] = useState(added_date ? new Date(added_date) : new Date());
+    const [productType, setProductType] = useState(product_type || "")
 
   const handleUpdate = async(e) => {
     e.preventDefault();

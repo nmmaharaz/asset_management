@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import EmployeeAssets from "./EmployeeComponent/EmployeeAssets";
 import { axiosSecure } from "../Hook/useAxiosSecure";
+import MyAssetsTable from "./EmployeeComponent/MyAssetsTable";
 
 const MyAssets = () => {
   const { user } = useAuth();
@@ -23,7 +24,7 @@ const MyAssets = () => {
   console.log(myAssistData, "vai ami hr");
 
   return (
-    <div className="w-10/12 mt-12 mx-auto">
+    <div className="w-11/12 mt-12 mx-auto">
       <div className="mb-4 bg-white flex flex-col justify-between sm:flex-row p-4 shadow-md rounded-t-xl">
         <div>
           <div className="relative">
@@ -47,7 +48,7 @@ const MyAssets = () => {
               name="Search"
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search..."
-              className="w-32 py-2 pl-10 text-sm rounded-md sm:w-auto focus:outline-none dark:bg-gray-100 dark:text-gray-800 focus:dark:bg-gray-50"
+              className="w-32 border border-gray-200 py-3 pl-10 text-sm rounded-md sm:w-auto focus:outline-none dark:bg-gray-100 dark:text-gray-800 focus:dark:bg-gray-50"
             />
           </div>
         </div>
@@ -73,7 +74,7 @@ const MyAssets = () => {
           </select>
         </div>
       </div>
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+      {/* <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         {myAssistData?.map((asset) => (
           <EmployeeAssets
             key={asset._id}
@@ -81,6 +82,11 @@ const MyAssets = () => {
             asset={asset}
           ></EmployeeAssets>
         ))}
+      </div> */}
+
+      <div>
+        <MyAssetsTable reset={reset}
+             myAssistData={myAssistData}></MyAssetsTable>
       </div>
     </div>
   );

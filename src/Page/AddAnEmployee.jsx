@@ -8,6 +8,7 @@ import AddEmployeeCard from "../Shered/AddEmployeeCard";
 import { axiosSecure } from "../Hook/useAxiosSecure";
 import { Link, useNavigate } from "react-router-dom";
 import HRReqest from "../Hook/HRRequest";
+import AddEmployeeTable from "../Shered/AddEmployeeTable";
 // import PackagePayment from "./PackagePayment";
 // import AddEmployeeCard from "../Shered/AddEmployeeCard";
 const AddAnEmployee = () => {
@@ -46,23 +47,15 @@ const AddAnEmployee = () => {
   console.log("Add Enployee", AddEmployee);
   if (loading) return <Loading></Loading>;
   return (
-    <div className="w-9/12 mx-auto">
-      <div className="my-11">
-      
-      </div>
-      <div className="bg-white py-8 rounded-md">
-        <div className="flex justify-between">
+    <div className="w-11/12 mt-2 mx-auto">
+      <div className="bg-white py-4 rounded-md">
+        <div className="px-11 flex flex-col sm:flex-row items-center justify-between">
         <div>
-        <div className="text-purple-800 text-5xl font-bold">
-          Add an employee
-        </div>
-        <p>{HREmployee?.email}</p>
-        <p>limit: {HREmployee?.employee_limit}</p>
-        <p>limit: {HREmployee?.total_employee}</p>
-        <p>{HREmployee?.email}</p>
+        <p className="text-xl sm:text-3xl font-bold">Employee limit: {HREmployee?.employee_limit}</p>
+        <p className="text-base sm:text-xl mt-1 mb-2 lg:mb-7">Total Employee: {HREmployee?.total_employee}</p>
         </div>
         <div>
-          <Link to="/package" className="btn btn-ghost bg-purple-600">Increse Limit</Link>
+          <Link to="/package" className="btn mb-3 sm:mb-0 text-white btn-ghost bg-purple-600">Increse Limit</Link>
         </div>
         </div>
         {/* <p>{HREmployee?.length}</p>
@@ -70,14 +63,16 @@ const AddAnEmployee = () => {
         {
           HREmployee?.map(hr=><p key={hr._id}>{hr?.email}</p>)
         } */}
-        {AddEmployee?.map((employee) => (
+        {/* {AddEmployee?.map((employee) => (
           <AddEmployeeCard
             key={employee._id}
             refetch={refetch}
             employee={employee}
             reset={reset}
           ></AddEmployeeCard>
-        ))}
+        ))} */}
+    <AddEmployeeTable reset={reset} refetch={refetch} AddEmployee={AddEmployee}></AddEmployeeTable>
+        
       </div>
     </div>
   );

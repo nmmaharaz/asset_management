@@ -1,4 +1,3 @@
-import React from "react";
 import { Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -13,7 +12,6 @@ import useAuth from "../Hook/useAtuh";
 import { useQuery } from "@tanstack/react-query";
 import { axiosSecure } from "../Hook/useAxiosSecure";
 
-// Register required chart components
 ChartJS.register(BarElement, CategoryScale, LinearScale, Title, Tooltip, Legend);
 
 const EmployeeAllStatus = () => {
@@ -71,12 +69,12 @@ const EmployeeAllStatus = () => {
       },
       title: {
         display: true,
-        text: "Monthly Sales Data",
+        text: "All Status",
       },
     },
   };
 
-  return <div className="flex-1 mx-auto"><Bar data={data} options={options} /></div>;
+  return <div className="w-11/12 lg:w-8/12 mt-8 mx-auto"><Bar data={data} options={options} /></div>;
 };
 
 export default EmployeeAllStatus;

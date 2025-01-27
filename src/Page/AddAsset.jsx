@@ -28,22 +28,15 @@ const AddAsset = () => {
   };
   return (
     <div>
-      <section className="p-6 dark:text-gray-900">
+      <section className="p-6 w-11/12 sm:9/12 lg:w-7/12 mx-auto dark:text-gray-900">
         <form
           onSubmit={handleSubmitAsset}
           noValidate=""
           action=""
           className="container flex flex-col mx-auto space-y-12"
         >
-          <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-white">
-            <div className="space-y-2 col-span-full lg:col-span-1">
-              <p className="font-medium">Personal Inormation</p>
-              <p className="text-xs">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Adipisci fuga autem eum!
-              </p>
-            </div>
-            <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
+          <fieldset className="grid gap-6 p-6 rounded-md shadow-md dark:bg-white">
+                <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
               <div className="col-span-full">
                 <label htmlFor="address" className="text-sm">
                   Product Name

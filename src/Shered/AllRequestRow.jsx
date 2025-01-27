@@ -61,7 +61,7 @@ const AllRequestRow = ({ reset, request }) => {
         <p>{request_status}</p>
       </td>
       <td className="p-3 text-center">
-        <p>{request_date}</p>
+        <p>{approval_date}</p>
       </td>
       <td className="p-3 text-center">
         <button

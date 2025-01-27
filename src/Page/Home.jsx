@@ -17,7 +17,7 @@ const Home = () => {
   const hrRole = useHRRole();
   
   // const [role] = useEmployee();
-  if(loading) return <Loading></Loading>
+  // if(loading) return <Loading></Loading>
   return (
     <div>
       {user?.email}

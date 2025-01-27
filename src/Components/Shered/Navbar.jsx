@@ -11,7 +11,7 @@ import { useQuery } from "@tanstack/react-query";
 import { axiosPublic } from "../../Hook/useAxiosPublic";
 
 const Navbar = () => {
-  const { user, loading, setLoading, log0ut } = useAuth();
+  const { user, setLoading, log0ut } = useAuth();
   const email = user?.email
   const [role] = useEmployee();
   const hrRole = useHRRole();
@@ -37,7 +37,6 @@ const Navbar = () => {
       return data;
     },
   });
-  console.log(userData, "data")
   // if(loading) return <Loading></Loading>
 
   return (

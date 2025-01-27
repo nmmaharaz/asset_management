@@ -47,7 +47,7 @@ const Stat = () => {
   return (
     <div>
       <section className="p-6 my-6">
-        <div className="container grid grid-cols-1 gap-6 mx-auto sm:grid-cols-2 xl:grid-cols-4">
+        <div className="container grid grid-cols-1 gap-6 mx-auto sm:grid-cols-2">
           <div className="flex bg-[#fff6f2] border shadow-md hover:shadow-purple-200 border-white p-4 space-x-4 rounded-lg md:space-x-6  text-gray-800">
             <div className="flex justify-center p-2 align-middle rounded-lg sm:p-4 bg-[#8142ee]">
             <FileUser className="text-white h-9 w-9" strokeWidth={1.5} />

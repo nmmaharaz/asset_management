@@ -1,25 +1,26 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../Hook/useAtuh";
 import { axiosSecure } from "../Hook/useAxiosSecure";
-import MonthlyRequestRow from "./MonthlyRequestRow";
+import MonthlyRequestRow from "../EmployeeHome/MonthlyRequestRow";
 import { Link } from "react-router-dom";
 
-const PendingRequest = () => {
+const HRPendingRequest = () => {
     const { user, loading } = useAuth();
-    const { data: topRequest = [] } = useQuery({
-      queryKey: ["topRequest", user?.email],
+    const { data: HrtopRequest = [] } = useQuery({
+      queryKey: ["HrtopRequest", user?.email],
       queryFn: async () => {
-        const { data } = await axiosSecure(`/toppending/${user?.email}`);
+        const { data } = await axiosSecure(`/hrtoppending/${user?.email}`);
         return data;
       },
     });
-    console.log(topRequest, "this is top")
+    console.log(HrtopRequest, "this is top")
+   
     return (
         <div>
         <div className="w-11/12 min-h-[600px] mt-8 mx-auto p-2 bg-white border border-gray-200 rounded-md">
           <div className="flex justify-end">
             <Link
-              to="/myrequest"
+              to="/allrequest"
               className="cursor-pointer bg-blue-100 text-xs rounded-sm px-3 py-1 block"
             >
               View All
@@ -49,7 +50,7 @@ const PendingRequest = () => {
                 </thead>
                 <tbody>
                   {
-                      topRequest?.slice(0,10).map((request, index)=> <MonthlyRequestRow key={request._id} index={index} request={request}></MonthlyRequestRow>) 
+                      HrtopRequest?.slice(0,5).map((request, index)=> <MonthlyRequestRow key={request._id} index={index} request={request}></MonthlyRequestRow>) 
                   }
                 </tbody>
               </table>
@@ -60,4 +61,4 @@ const PendingRequest = () => {
     );
 };
 
-export default PendingRequest;
+export default HRPendingRequest;

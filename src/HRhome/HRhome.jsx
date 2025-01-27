@@ -1,5 +1,6 @@
 import AllStatus from "./AllStatus";
 import EmployeeList from "./EmployeeList";
+import HRPendingRequest from "./HRPendingRequest";
 import LiimitedStock from "./LiimitedStock";
 import Returnable_non from "./Returnable_non";
 import Stat from "./Stat";
@@ -9,13 +10,16 @@ const HRhome = () => {
   return (
     <div className="bg-[#f8f9fa] ">
       <div className="w-11/12 mx-auto">
+      <div className="lg:grid lg:grid-cols-2">
       <Stat></Stat>
-      <div className="sm:flex items-start">
       <TopRequest></TopRequest>
+      </div>
+      <div className="lg:grid lg:grid-cols-2">
+        <HRPendingRequest></HRPendingRequest>
       <LiimitedStock></LiimitedStock>
+      <EmployeeList></EmployeeList>
       </div>
       
-      <EmployeeList></EmployeeList>
     
       <div className="sm:flex">
       <Returnable_non></Returnable_non>
