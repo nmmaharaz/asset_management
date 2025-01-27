@@ -22,6 +22,7 @@ const EmployeeRequest = ({ asset, reset, openModal, setOpenModal }) => {
       name:user?.displayName,
       product_name,
       product_type,
+      product_quantity,
       additional_rule,
       request_date,
       hr_email,

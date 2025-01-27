@@ -8,12 +8,13 @@ import useAuth from "../Hook/useAtuh";
 // import useEmployee from "../Hook/useEployee";
 import useHRRole from "../Hook/useHRRole";
 import Loading from "../Loading/Loading";
+import HRhome from "../HRhome/HRhome";
 const Home = () => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const hrRole = useHRRole();
   
   // const [role] = useEmployee();
-//   if(loading) return <Loading></Loading>
+  // if(loading) return <Loading></Loading>
   return (
     <div>
       {user?.email}
@@ -28,6 +29,12 @@ const Home = () => {
             <Review></Review>
           </>
         ))}
+
+        {
+          hrRole[0] === "HR" && <>
+          <HRhome></HRhome>
+          </>
+        }
     </div>
   );
 };
