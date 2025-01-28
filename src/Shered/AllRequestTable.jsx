@@ -133,7 +133,8 @@ const AllRequestTable = ({ allRequest, reset }) => {
                       </TableCell>
                       <TableCell className="text-center">{row?.name}</TableCell>
                       <TableCell className="text-center">
-                        {row?.request_date}
+                        {format(new Date(row?.request_date), "dd/MM/yyyy")}
+
                       </TableCell>
                       <TableCell className="text-center">
                         {row?.additional_rule}

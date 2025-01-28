@@ -14,19 +14,15 @@ import EmployeeHome from "../EmployeeHome/EmployeeHome";
 import { Helmet } from "react-helmet-async";
 import UserHome from "../HomeComponent/UserHome";
 const Home = () => {
-  const { user, loading } = useAuth();
+  const { user} = useAuth();
   const [role] = useEmployee();
   const hrRole = useHRRole();
-
-  // const [role] = useEmployee();
-  // if(loading) return <Loading></Loading>
   return (
     <div>
       <Helmet>
         <title>Safe Asset || Home</title>
       </Helmet>
-      {hrRole[0] === "HR_Request" ||
-        (!user?.email && (
+      {!user?.email && (
           <>
             <Banner></Banner>
             <About></About>
@@ -34,7 +30,10 @@ const Home = () => {
             <AboutSection></AboutSection>
             <Review></Review>
           </>
-        ))}
+        )}
+        {
+          hrRole[0] === "HR_Request" && <Package></Package>
+        }
 
       {hrRole[0] === "HR" && (
         <>

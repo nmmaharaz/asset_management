@@ -6,8 +6,7 @@ import { axiosSecure } from "../Hook/useAxiosSecure";
 import useAuth from "../Hook/useAtuh";
 import { toast } from "react-toastify";
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import { data, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import Loading from "../Loading/Loading";
 import { axiosPublic } from "../Hook/useAxiosPublic";
 
@@ -149,7 +148,7 @@ const CheckoutForm = () => {
         type="submit"
         disabled={!stripe || !clientSecret || processing}
       >
-        {total}
+        Pay ( {total} )
       </button>
     </form>
   );

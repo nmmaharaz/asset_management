@@ -14,6 +14,9 @@ import EmployeeRequest from "../../HomeComponent/EmployeeRequest";
 import Swal from "sweetalert2";
 import { axiosSecure } from "../../Hook/useAxiosSecure";
 import { toast } from "react-toastify";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import PrintAsset from "./PrintAssset"
+import { format } from "date-fns";
 
 const RequestTable = ({ requestData, refetch }) => {
   const handleReturn = async (_id, asset_id) => {
@@ -107,57 +110,65 @@ const RequestTable = ({ requestData, refetch }) => {
                         {row?.product_type}
                       </TableCell>
                       <TableCell className="text-center">
-                        {row?.request_date}
+                        {format(new Date(row?.request_date), "dd/MM/yyyy")}
+
                       </TableCell>
                       <TableCell className="text-center">
                         {row?.approval_date}
                       </TableCell>
                       <TableCell>
-                        <p className={`text-center ${
-                          row.request_status == "Approved" &&
-                          "text-green-500 font-semibold"
-                        } ${
-                          row.request_status == "Rejected" &&
-                          "text-red-400 font-semibold"
-                        } ${
-                          row.request_status == "Pending" &&
-                          "text-blue-600 font-semibold"
-                        } ${
-                          row.request_status == "Returned" &&
-                          "text-orange-400 font-semibold"
-                        }`}>
-                        {row?.request_status}
+                        <p
+                          className={`text-center ${
+                            row.request_status == "Approved" &&
+                            "text-green-500 font-semibold"
+                          } ${
+                            row.request_status == "Rejected" &&
+                            "text-red-400 font-semibold"
+                          } ${
+                            row.request_status == "Pending" &&
+                            "text-blue-600 font-semibold"
+                          } ${
+                            row.request_status == "Returned" &&
+                            "text-orange-400 font-semibold"
+                          }`}
+                        >
+                          {row?.request_status}
                         </p>
                       </TableCell>
                       <TableCell className="text-center">
                         <div className="flex gap-3">
-                        {row?.request_status == "Pending" ? (
-                          <button
-                            onClick={() => handleDelete(row?._id)}
-                            className="px-3 disabled:bg-slate-500 hover:shadow-md hover:shadow-purple-300 py-1 font-semibold rounded-md bg-red-400 text-gray-50"
-                          >
-                            Cencel
-                          </button>
-                        ) : (
-                          <button className="px-3 disabled:bg-slate-500 hover:shadow-md hover:shadow-purple-300 py-1 font-semibold rounded-md bg-violet-600 text-gray-50">
-                            Print
-                          </button>
-                        )}
-                        {(row?.request_status == "Approved" ||
-                          row?.request_status == "Returned") &
-                        (row?.product_type == "Returnable") ? (
-                          <button
-                            onClick={() =>
-                              handleReturn(row?._id, row?.asset_id)
-                            }
-                            disabled={row?.request_status == "Returned"}
-                            className="px-3 disabled:bg-slate-500 hover:shadow-md hover:shadow-purple-300 py-1 font-semibold rounded-md bg-red-300 text-gray-50"
-                          >
-                            Return
-                          </button>
-                        ) : (
-                          ""
-                        )}
+                          {row?.request_status == "Pending" ? (
+                            <button
+                              onClick={() => handleDelete(row?._id)}
+                              className="px-3 disabled:bg-slate-500 hover:shadow-md hover:shadow-purple-300 py-1 font-semibold rounded-md bg-red-400 text-gray-50"
+                            >
+                              Cencel
+                            </button>
+                          ) : (
+                            <PDFDownloadLink
+                              document={<PrintAsset row={row} />}
+                              fileName={`${row?.product_name}_details.pdf`}
+                            >
+                              <button className="px-3 disabled:bg-slate-500 hover:shadow-md hover:shadow-purple-300 py-1 font-semibold rounded-md bg-violet-600 text-gray-50">
+                                Print
+                              </button>
+                            </PDFDownloadLink>
+                          )}
+                          {(row?.request_status == "Approved" ||
+                            row?.request_status == "Returned") &
+                          (row?.product_type == "Returnable") ? (
+                            <button
+                              onClick={() =>
+                                handleReturn(row?._id, row?.asset_id)
+                              }
+                              disabled={row?.request_status == "Returned"}
+                              className="px-3 disabled:bg-slate-500 hover:shadow-md hover:shadow-purple-300 py-1 font-semibold rounded-md bg-red-300 text-gray-50"
+                            >
+                              Return
+                            </button>
+                          ) : (
+                            ""
+                          )}
                         </div>
                       </TableCell>
                     </TableRow>

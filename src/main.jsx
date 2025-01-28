@@ -10,13 +10,13 @@ import { HelmetProvider } from "react-helmet-async";
 
 const queryClient = new QueryClient()
 createRoot(document.getElementById("root")).render(
- <HelmetProvider>
+  <QueryClientProvider client={queryClient}>
+    <HelmetProvider>
   <AuthProvider>
     <StrictMode>
-      <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
-      </QueryClientProvider>
     </StrictMode>
   </AuthProvider>
  </HelmetProvider>
+  </QueryClientProvider>
 );

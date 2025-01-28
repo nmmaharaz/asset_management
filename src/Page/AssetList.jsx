@@ -2,8 +2,6 @@ import { useState } from "react";
 import useAuth from "../Hook/useAtuh";
 import Loading from "../Loading/Loading";
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import Asset from "../Shered/Asset";
 import { axiosSecure } from "../Hook/useAxiosSecure";
 import AssetsListTable from "../Shered/AssetsListTable";
 import { Helmet } from "react-helmet";
@@ -101,12 +99,6 @@ const AssetList = () => {
         </div>
       </div>
       <div className="bg-white p-4 rounded-b-xl">
-        {/* <div className=" grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {allAssets?.map((asset) => (
-            <Asset asset={asset} reload={reload} key={asset._id}></Asset>
-          ))}
-        </div> */}
-
         <AssetsListTable allAssets={allAssets} reload={reload}></AssetsListTable>
       </div>
     </div>

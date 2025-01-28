@@ -5,11 +5,13 @@ import SignUpGoogle from "./SignUpGoogle";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
+import { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const { signIn } = useAuth();
   const navigate = useNavigate();
-  // const { signUp } = useAuth();
+  const [showPassword, setShowPassword] = useState(false)
   const handleLogin = (e) => {
     e.preventDefault();
     const formData = e.target;
@@ -62,17 +64,15 @@ const Login = () => {
             <label htmlFor="password" className="block dark:text-gray-600">
               Password
             </label>
+            <div className="relative">
             <input
-              type="password"
+              type={showPassword?'text':'password'}
               name="password"
               id="password"
               placeholder="Password"
               className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
             />
-            <div className="flex justify-end text-xs dark:text-gray-600">
-              <a rel="noopener noreferrer" href="#">
-                Forgot Password?
-              </a>
+            {showPassword ? <FaEye onClick={()=>setShowPassword(!showPassword)} className="absolute right-3 cursor-pointer top-[40%]" />:<FaEyeSlash onClick={()=>setShowPassword(!showPassword)}  className="absolute right-3 cursor-pointer top-[40%]" />}
             </div>
           </div>
           <button className="block w-full p-3 text-center rounded-md dark:text-gray-50 dark:bg-violet-600">

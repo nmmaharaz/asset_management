@@ -1,23 +1,22 @@
 import { useState } from "react";
 import useAuth from "../Hook/useAtuh";
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import Request from "../HomeComponent/Request";
+import Loading from "../Loading/Loading"
 import { axiosSecure } from "../Hook/useAxiosSecure";
 import RequestTable from "./EmployeeComponent/RequestTable";
 import { Helmet } from "react-helmet";
 import useEmployee from "../Hook/useEployee";
 
 const MyRequest = () => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const [role] = useEmployee();
   const [search, setSearch] = useState("");
   const [type, setAssetType] = useState("");
   const [status, setStatus] = useState("")
 
-  const [loading, setLoading] = useState(true);
+  const [loader, setLoading] = useState(true);
   const { data: requestData = [], refetch } = useQuery({
-    queryKey: ["requestData",search, type, status],
+    queryKey: ["requestData",user?.email, search, type, status],
     queryFn: async () => {
       const { data } = await axiosSecure(
         `/myrequest/${user?.email}?search=${search}&type=${type}&status=${status}`
@@ -26,7 +25,7 @@ const MyRequest = () => {
       return data;
     },
   });
-  console.log(requestData, "requested data");
+  if(loading) return <Loading></Loading>
   return (
     <div className="w-11/12 mx-auto my-7">
       <Helmet>

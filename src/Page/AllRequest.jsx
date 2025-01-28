@@ -1,8 +1,6 @@
 import { useState } from "react";
 import useAuth from "../Hook/useAtuh";
-import AllRequestRow from "../Shered/AllRequestRow";
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import useAxiosSecure from "../Hook/useAxiosSecure";
 import AllRequestTable from "../Shered/AllRequestTable";
 import { Helmet } from "react-helmet";
@@ -57,36 +55,7 @@ const AllRequest = () => {
             />
           </div>
         </div>
-          {/* <div className="overflow-x-auto rounded-md">
-            <table className="min-w-full text-xs">
-              <colgroup>
-                <col />
-                <col />
-                <col />
-                <col />
-                <col />
-                <col className="w-44" />
-              </colgroup>
-              <thead className="dark:bg-gray-300">
-                <tr className="text-left">
-                  <th className="p-3 text-center">Invoice #</th>
-                  <th className="p-3 text-center">Name</th>
-                  <th className="p-3 text-center">Asset Type</th>
-                  <th className="p-3 text-center">Employee Email</th>
-                  <th className="p-3 text-center">Employee Name</th>
-                  <th className="p-3 text-center">Addition Note</th>
-                  <th className="p-3 text-center">Status</th>
-                  <th className="p-3 text-center">Approve</th>
-                  <th className="p-3 text-center">Reject</th>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  allRequest?.map(request=><AllRequestRow key={request._id} reset={reset} request={request}></AllRequestRow>)
-                }
-              </tbody>
-            </table>
-          </div> */}
+        
           <AllRequestTable reset={reset} allRequest={allRequest}></AllRequestTable>
         </div>
       </div>
