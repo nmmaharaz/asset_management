@@ -17,7 +17,7 @@ const MyAssets = () => {
   const [availability, setAvailability] = useState("");
 
   const { data: myAssistData, refetch: reset } = useQuery({
-    queryKey: ["myAssistData",type,availability],
+    queryKey: ["myAssistData",type, availability, search, user?.email],
     queryFn: async () => {
       const { data } = await axiosSecure(`/allasset/${user?.email}?search=${search}&type=${type}&availability=${availability}`);
       return data;
