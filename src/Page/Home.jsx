@@ -7,7 +7,6 @@ import Review from "../HomeComponent/Review";
 import useAuth from "../Hook/useAtuh";
 // import useEmployee from "../Hook/useEployee";
 import useHRRole from "../Hook/useHRRole";
-import Loading from "../Loading/Loading";
 import HRhome from "../HRhome/HRhome";
 import useEmployee from "../Hook/useEployee";
 import EmployeeHome from "../EmployeeHome/EmployeeHome";
@@ -17,6 +16,7 @@ const Home = () => {
   const { user} = useAuth();
   const [role] = useEmployee();
   const hrRole = useHRRole();
+  // if(loading) return<Loading></Loading>
   return (
     <div>
       <Helmet>

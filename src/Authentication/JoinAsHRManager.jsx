@@ -13,7 +13,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-
+import image from "../assets/Mobile login-rafiki.png"
 const JoinAsHRManager = () => {
   const { signUp, googlesignin, updateUserProfile } = useAuth();
   const navigate = useNavigate();
@@ -87,8 +87,12 @@ const JoinAsHRManager = () => {
       <Helmet>
         <title>Safe Asset || Join HR</title>
       </Helmet>
-      <div>
-        <div className="w-full mx-auto mt-7 max-w-md p-8 space-y-3 rounded-xl bg-purple-100 dark:text-gray-800">
+      <div className="grid items-start grid-cols-1 lg:grid-cols-2">
+        <div className="hidden lg:flex">
+          <img src={image} alt="" />
+        </div>
+        <div>
+        <div className="bg-white shadow-md shadow-purple-200 rounded-2xl p-5 mx-5 lg:mx-20">
           <h1 className="text-2xl font-bold text-center">Join as HR Manager</h1>
           <form
             onSubmit={handleSubmitJoinHREmployee}
@@ -106,7 +110,7 @@ const JoinAsHRManager = () => {
                 id="fullname"
                 required
                 placeholder="fullname"
-                className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
+                className="w-full rounded-md bg-purple-50 py-3 px-3 focus:ring focus:ring-opacity-75 dark:text-purple-600  focus:dark:ring-violet-600 border border-gray-300"
               />
             </div>
             <div className="space-y-1 text-sm">
@@ -119,7 +123,7 @@ const JoinAsHRManager = () => {
                 id="companyname"
                 required
                 placeholder="companyname"
-                className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
+                className="w-full rounded-md bg-purple-50 py-3 px-3 focus:ring focus:ring-opacity-75 dark:text-purple-600  focus:dark:ring-violet-600 border border-gray-300"
               />
             </div>
             <div className="space-y-1 text-sm">
@@ -147,7 +151,7 @@ const JoinAsHRManager = () => {
                 id="email"
                 required
                 placeholder="email"
-                className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
+                className="w-full rounded-md bg-purple-50 py-3 px-3 focus:ring focus:ring-opacity-75 dark:text-purple-600  focus:dark:ring-violet-600 border border-gray-300"
               />
             </div>
             <div className="space-y-1 text-sm">
@@ -161,7 +165,7 @@ const JoinAsHRManager = () => {
                 id="password"
                 required
                 placeholder="Password"
-                className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
+                className="w-full rounded-md bg-purple-50 py-3 px-3 focus:ring focus:ring-opacity-75 dark:text-purple-600  focus:dark:ring-violet-600 border border-gray-300"
               />
               {showPassword ? <FaEye onClick={()=>setShowPassword(!showPassword)} className="absolute right-3 cursor-pointer top-[40%]" />:<FaEyeSlash onClick={()=>setShowPassword(!showPassword)}  className="absolute right-3 cursor-pointer top-[40%]" />}
               </div>
@@ -173,14 +177,13 @@ const JoinAsHRManager = () => {
               </label>
               <div className="w-full">
                 <DatePicker
-                  className="w-full outline-none border-none px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900"
+                  className="w-full rounded-md bg-purple-50 py-3 px-3 focus:ring focus:ring-opacity-75 dark:text-purple-600  focus:dark:ring-violet-600 border border-gray-300"
                   onChange={onChange}
                   value={value}
                 />
               </div>
             </div>
             <UploadImage></UploadImage>
-            {/* package list */}
             <div className="w-full ">
               <label
                 htmlFor="fullname"
@@ -188,7 +191,7 @@ const JoinAsHRManager = () => {
               >
                 Package Details
               </label>
-              <div className="mx-auto w-full max-w-md">
+              <div className="mx-auto w-full ">
                 <RadioGroup
                   by="name"
                   value={selected}
@@ -216,7 +219,7 @@ const JoinAsHRManager = () => {
               </div>
             </div>
             {/* package list */}
-            <button className="block w-full p-3 text-center rounded-sm dark:text-gray-50 dark:bg-violet-600">
+            <button className="block w-full p-3 text-center rounded-lg btn btn-outline btn-primary">
               SignUp
             </button>
           </form>
@@ -239,6 +242,7 @@ const JoinAsHRManager = () => {
             </a>
           </p>
         </div>
+      </div>
       </div>
     </div>
   );

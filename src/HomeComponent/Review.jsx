@@ -1,10 +1,11 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Pagination } from "swiper/modules";
+import "swiper/css/navigation";
+import { Pagination, Navigation } from "swiper/modules";
 import ReviewCard from "./ReviewCard";
-
 const Review = () => {
+
   const reviews = [
     {
       id: 1,
@@ -67,13 +68,18 @@ const Review = () => {
         HRMS system.
       </p>
       <Swiper
-        slidesPerView={3}
-        spaceBetween={30}
-        pagination={{
-          clickable: true,
+         spaceBetween={30}
+         
+         autoplay={{
+          delay: 2500, 
+          disableOnInteraction: false, 
         }}
-        modules={[Pagination]}
-        className="mySwiper mt-12"
+         modules={[Pagination, Navigation]} 
+         breakpoints={{
+           640: { slidesPerView: 1, spaceBetween: 20 },
+           768: { slidesPerView: 2, spaceBetween: 30 },
+           1024: { slidesPerView: 3, spaceBetween: 40 },
+         }}
       >
         {reviews?.map((review) => (
           <SwiperSlide className="my-2" key={review.id}>

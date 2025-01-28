@@ -11,8 +11,7 @@ import { useQuery } from "@tanstack/react-query";
 import { axiosPublic } from "../../Hook/useAxiosPublic";
 
 const Navbar = () => {
-  const { user, setLoading, log0ut } = useAuth();
-  const email = user?.email
+  const { user,  log0ut } = useAuth();
   const [role] = useEmployee();
   const hrRole = useHRRole();
   const navigate = useNavigate()
@@ -33,7 +32,7 @@ const Navbar = () => {
     queryKey: ["userData"],
     queryFn: async () => {
       const { data } = await axiosPublic(
-        `/employeeCompany/${email}`
+        `/employeeCompany/${user?.email}`
       );
       return data;
     },
@@ -43,7 +42,7 @@ const Navbar = () => {
   return (
     <div className="sticky z-50 top-0">
       <header className="p-4 bg-gray-100 text-gray-800">
-        <div className="container flex justify-between h-16 mx-auto">
+        <div className="container w-11/12 mx-auto flex justify-between h-16 mx-auto">
           <a
             rel="noopener noreferrer"
             href="#"

@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { format } from "date-fns";
 import { axiosSecure } from "../Hook/useAxiosSecure";
 import { Helmet } from "react-helmet";
+import { clear } from "localforage";
 
 const AddAsset = () => {
   const { user } = useAuth();
@@ -25,7 +26,7 @@ const AddAsset = () => {
       hr_email: user?.email,
     };
     axiosSecure.post(`/asset`, assetData);
-    toast.success("Employee account signup successfully");
+    toast.success("Asset successfully added");
   };
   return (
     <div>

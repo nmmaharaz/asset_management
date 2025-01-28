@@ -20,7 +20,7 @@ const TopRequest = () => {
       useEffect(()=>{
         if(topRequest[0]){
             const {products}= topRequest[0]
-            setTopReq(products.slice(0, 4))
+            setTopReq(products?.slice(0, 4))
         }
       },[topRequest])
       console.log(topReq, "vai")

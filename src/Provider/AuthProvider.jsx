@@ -7,9 +7,7 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser]= useState(null)
-  console.log("miya user  ache", user)
   const provider = new GoogleAuthProvider();
-
   const signIn = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password)

@@ -123,7 +123,7 @@ const CheckoutForm = () => {
     }
   };
 
-  if (loading) return <Loading></Loading>;
+  // if (loading) return <Loading></Loading>;
 
   return (
     <form onSubmit={handleSubmit}>

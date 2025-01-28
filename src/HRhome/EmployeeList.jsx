@@ -15,7 +15,7 @@ const EmployeeList = () => {
   });
   return (
     <div>
-      <div className="w-11/12 min-h-[600px] mt-8 mx-auto p-2 bg-white border border-gray-200 rounded-md">
+      <div className="w-11/12 min-h-[400px] mt-8 mx-auto p-2 bg-white border border-gray-200 rounded-md">
        <div className="flex justify-between">
        <h2 className="mb-4 text-2xl font-semibold leading-tight">
             Employee List
