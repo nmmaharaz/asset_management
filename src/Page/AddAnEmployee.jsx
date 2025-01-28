@@ -67,19 +67,6 @@ const AddAnEmployee = () => {
             </Link>
           </div>
         </div>
-        {/* <p>{HREmployee?.length}</p>
-        
-        {
-          HREmployee?.map(hr=><p key={hr._id}>{hr?.email}</p>)
-        } */}
-        {/* {AddEmployee?.map((employee) => (
-          <AddEmployeeCard
-            key={employee._id}
-            refetch={refetch}
-            employee={employee}
-            reset={reset}
-          ></AddEmployeeCard>
-        ))} */}
         <AddEmployeeTable
           reset={reset}
           refetch={refetch}

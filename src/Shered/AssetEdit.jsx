@@ -28,7 +28,7 @@ const AssetEdit = ({ setOpenModal, openModal, reload, asset }) => {
     };
     console.log(assetData);
     const {data} = await axios.patch(`${import.meta.env.VITE_API_URL}/asset/${_id}`, assetData);
-    toast.success("Employee account signup successfully");
+    toast.success("Asset edit successfully");
     reload()
     setOpenModal(false)
   };

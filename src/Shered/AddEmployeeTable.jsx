@@ -59,6 +59,7 @@ const AddEmployeeTable = ({ AddEmployee, reset, refetch }) => {
       });
       setSelectedItems([]);
       refetch(); 
+      reset();
     } catch (error) {
       console.error("Error updating status:", error);
       Swal.fire({
