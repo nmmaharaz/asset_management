@@ -5,7 +5,7 @@ import { axiosSecure } from "../Hook/useAxiosSecure";
 const MyEmployeeRow = ({ employee, refetch, reset }) => {
   const { user } = useAuth();
   const { _id, name, email, user_photo, role } = employee || {};
-  console.log(email);
+  // console.log(email);
   const handleAddTeam = async () => {
     const updateUser = {
       hr_email: "",

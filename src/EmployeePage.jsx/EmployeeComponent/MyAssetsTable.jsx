@@ -15,7 +15,7 @@ import EmployeeRequest from "../../HomeComponent/EmployeeRequest";
 const MyAssetsTable = ({ myAssistData, reset }) => {
   const [openModal, setOpenModal] = useState(false);
   const [asset, setAsset] = useState("");
-  console.log(asset, "all assets")
+  // console.log(asset, "all assets")
   const [page, setPage] = useState(0);
 
   const [rowsPerPage, setRowsPerPage] = useState(10);

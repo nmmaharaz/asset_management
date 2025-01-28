@@ -25,7 +25,7 @@ const AddAnEmployee = () => {
       return data;
     },
   });
-  console.log(HREmployee, "vai ami hr");
+  // console.log(HREmployee, "vai ami hr");
 
   const {
     data: AddEmployee = [],
@@ -41,7 +41,7 @@ const AddAnEmployee = () => {
       return data;
     },
   });
-  console.log("Add Enployee", AddEmployee);
+  // console.log("Add Enployee", AddEmployee);
   if (loading) return <Loading></Loading>;
   return (
     <div className="w-11/12 mt-2 mx-auto">

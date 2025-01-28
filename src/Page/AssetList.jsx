@@ -13,8 +13,8 @@ const AssetList = () => {
   const [type, setAssetType] = useState("");
   const [quantity, setQuentity] = useState("");
   const [sort, setSort] = useState(false)
-  console.log(sort, "short ")
-  console.log(quantity, "assets");
+  // console.log(sort, "short ")
+  // console.log(quantity, "assets");
   // console.log(search);
   // const select = valuecl.value
   const {
@@ -32,7 +32,7 @@ const AssetList = () => {
     },
   });
   if (loading) return <Loading></Loading>;
-  console.log("Asset List", allAssets);
+  // console.log("Asset List", allAssets);
   return (
     <div className="w-10/12 mx-auto">
       <Helmet>

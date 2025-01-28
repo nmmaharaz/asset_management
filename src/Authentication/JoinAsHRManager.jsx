@@ -26,7 +26,7 @@ const JoinAsHRManager = () => {
     { name: "20 Members for $15", value: 15 },
   ];
   const [selected, setSelected] = useState(plans[0]);
-  console.log("vai tumi ki select korcho?", selected.value);
+  // console.log("vai tumi ki select korcho?", selected.value);
   const [value, onChange] = useState(new Date());
   const handleSubmitJoinHREmployee = async (e) => {
     e.preventDefault();
@@ -60,7 +60,7 @@ const JoinAsHRManager = () => {
     signUp(email, password)
       .then((result) => {
         updateUserProfile(name, user_photo);
-        console.log("this is image", user_photo);
+        // console.log("this is image", user_photo);
         const employeeData = {
           name: name,
           user_photo,

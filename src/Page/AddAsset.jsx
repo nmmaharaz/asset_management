@@ -10,7 +10,7 @@ import { clear } from "localforage";
 const AddAsset = () => {
   const { user } = useAuth();
   const [productType, setProductType] = useState("");
-  console.log("this is product type", productType);
+  // console.log("this is product type", productType);
   const handleSubmitAsset = (e) => {
     e.preventDefault();
     const product_name = e.target.product_name.value;

@@ -22,7 +22,7 @@ const AllRequest = () => {
         return data
     },
   });
-  console.log(allRequest, "vai ami hr")
+  // console.log(allRequest, "vai ami hr")
   return (
     <div>
       <Helmet>
