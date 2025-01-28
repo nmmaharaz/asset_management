@@ -8,7 +8,7 @@ const useHRRole = () => {
   const { loading, user } = useAuth();
   const { data: role, isLoading } = useQuery({
     queryKey: ["role", user?.email],
-    enabled: !loading && !!user?.email,
+    enabled: !loading && !!user?.email && !!localStorage.getItem("access-token"),
     queryFn: async () => {
       const { data } = await axiosPublic(
         `/hrusers/role/${user?.email}`
@@ -16,7 +16,7 @@ const useHRRole = () => {
       return data.role;
     },
   });
- 
+ console.log(loading, "load")
   return [role, isLoading];
 };
 

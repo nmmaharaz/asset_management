@@ -4,10 +4,11 @@ import { useQuery } from "@tanstack/react-query";
 import { axiosSecure } from "../Hook/useAxiosSecure";
 
 const Stat = () => {
-    const {user} = useAuth()
+    const {user, loading} = useAuth()
     const email = user?.email
     const { data: totalRequest = [], refetch } = useQuery({
         queryKey: ["totalRequest", user?.email],
+        enabled: !loading && !!user?.email && !!localStorage.getItem("access-token"),
         queryFn: async () => {
           const { data } = await axiosSecure(
             `/totalRequest/${user?.email}`
@@ -17,6 +18,7 @@ const Stat = () => {
       });
     const { data: totalApproved = [] } = useQuery({
         queryKey: ["totalApproved", user?.email],
+        enabled: !loading && !!user?.email && !!localStorage.getItem("access-token"),
         queryFn: async () => {
           const { data } = await axiosSecure(
             `/totalapproved/${user?.email}`
@@ -26,6 +28,7 @@ const Stat = () => {
       });
     const { data: totalRejected = [] } = useQuery({
         queryKey: ["totalRejected", email],
+        enabled: !loading && !!user?.email && !!localStorage.getItem("access-token"),
         queryFn: async () => {
           const { data } = await axiosSecure(
             `/totalrejected/${email}`
@@ -35,6 +38,7 @@ const Stat = () => {
       });
     const { data: totalReturned = [] } = useQuery({
         queryKey: ["totalReturned", email],
+        enabled: !loading && !!user?.email && !!localStorage.getItem("access-token"),
         queryFn: async () => {
           const { data } = await axiosSecure(
             `/totalreturned/${email}`

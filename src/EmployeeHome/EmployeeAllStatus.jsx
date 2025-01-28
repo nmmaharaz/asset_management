@@ -18,6 +18,7 @@ const EmployeeAllStatus = () => {
     const { user, loading } = useAuth();
     const { data: EmployeeApprovedData = [] } = useQuery({
       queryKey: ["EmployeeApprovedData", user?.email],
+      enabled: !loading && !!user?.email && !!localStorage.getItem("access-token"),
       queryFn: async () => {
         const { data } = await axiosSecure(`/employeeapproveddata/${user?.email}`);
         return data;
@@ -26,6 +27,7 @@ const EmployeeAllStatus = () => {
 
     const { data: EmployeePendingData = [] } = useQuery({
         queryKey: ["EmployeePendingData", user?.email],
+        enabled: !loading && !!user?.email && !!localStorage.getItem("access-token"),
         queryFn: async () => {
           const { data } = await axiosSecure(`/employeependingdata/${user?.email}`);
           return data;
@@ -34,6 +36,7 @@ const EmployeeAllStatus = () => {
 
     const { data: EmployeeRejectedData = [] } = useQuery({
       queryKey: ["EmployeeRejectedData", user?.email],
+      enabled: !loading && !!user?.email && !!localStorage.getItem("access-token"),
       queryFn: async () => {
         const { data } = await axiosSecure(`/employeerejecteddata/${user?.email}`);
         return data;
@@ -42,6 +45,7 @@ const EmployeeAllStatus = () => {
   
     const { data: EmployeeReturnData = [] } = useQuery({
       queryKey: ["EmployeeReturnData", user?.email],
+      enabled: !loading && !!user?.email && !!localStorage.getItem("access-token"),
       queryFn: async () => {
         const { data } = await axiosSecure(`/employeereturndata/${user?.email}`);
         return data;

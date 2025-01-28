@@ -20,6 +20,7 @@ const AllStatus = () => {
     const { user, loading } = useAuth();
     const { data: ApprovedData = [] } = useQuery({
       queryKey: ["ApprovedData", user?.email],
+      enabled: !loading && !!user?.email && !!localStorage.getItem("access-token"),
       queryFn: async () => {
         const { data } = await axiosSecure(`/approveddata/${user?.email}`);
         return data;
@@ -28,6 +29,7 @@ const AllStatus = () => {
 
     const { data: PendingData = [] } = useQuery({
         queryKey: ["PendingData", user?.email],
+        enabled: !loading && !!user?.email && !!localStorage.getItem("access-token"),
         queryFn: async () => {
           const { data } = await axiosSecure(`/pendingdata/${user?.email}`);
           return data;
@@ -36,6 +38,7 @@ const AllStatus = () => {
 
     const { data: RejectedData = [] } = useQuery({
       queryKey: ["RejectedData", user?.email],
+      enabled: !loading && !!user?.email && !!localStorage.getItem("access-token"),
       queryFn: async () => {
         const { data } = await axiosSecure(`/rejecteddata/${user?.email}`);
         return data;
@@ -44,6 +47,7 @@ const AllStatus = () => {
   
     const { data: ReturnData = [] } = useQuery({
       queryKey: ["ReturnData", user?.email],
+      enabled: !loading && !!user?.email && !!localStorage.getItem("access-token"),
       queryFn: async () => {
         const { data } = await axiosSecure(`/returndata/${user?.email}`);
         return data;

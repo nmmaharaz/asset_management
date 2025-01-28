@@ -11,7 +11,7 @@ import { useQuery } from "@tanstack/react-query";
 import { axiosPublic } from "../../Hook/useAxiosPublic";
 
 const Navbar = () => {
-  const { user,  log0ut } = useAuth();
+  const { user,  log0ut, loading } = useAuth();
   const [role] = useEmployee();
   const hrRole = useHRRole();
   const navigate = useNavigate()
@@ -21,28 +21,34 @@ const Navbar = () => {
   };
   const { data: hrData = [], refetch } = useQuery({
     queryKey: ["hrData", user?.email],
+    enabled: !loading && !!user?.email && !!localStorage.getItem("access-token"),
     queryFn: async () => {
-      const { data } = await axiosPublic(
+      const { data } = await axiosSecure(
         `/hrCompany/${user?.email}`
       );
       return data;
     },
   });
+
+
+
   const { data: userData = [],} = useQuery({
     queryKey: ["userData"],
+    enabled: !loading && !!user?.email && !!localStorage.getItem("access-token"),
     queryFn: async () => {
-      const { data } = await axiosPublic(
+      const { data } = await axiosSecure(
         `/employeeCompany/${user?.email}`
       );
       return data;
     },
   });
 
+  if(loading) return<Loading></Loading>
 
   return (
     <div className="sticky z-50 top-0">
-      <header className="p-4 bg-gray-100 text-gray-800">
-        <div className="container w-11/12 mx-auto flex justify-between h-16 mx-auto">
+      <header className=" bg-gray-100 text-gray-800">
+        <div className="container w-11/12 flex justify-between h-16 mx-auto">
           <a
             rel="noopener noreferrer"
             href="#"

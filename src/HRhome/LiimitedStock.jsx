@@ -8,6 +8,7 @@ const LiimitedStock = () => {
     const {user, loading} = useAuth()
     const { data: limitedStock = [] } = useQuery({
         queryKey: ["limitedStock", user?.email],
+        enabled: !loading && !!user?.email && !!localStorage.getItem("access-token"),
         queryFn: async () => {
           const { data } = await axiosSecure(
             `/limitedstock/${user?.email}`
@@ -15,7 +16,6 @@ const LiimitedStock = () => {
           return data;
         },
       });
-    //   console.log("limited", limitedStock)
     return (
     <div className="w-11/12 mt-4 lg:mt-8 min-h-[400px] mx-auto p-2 bg-white border border-gray-200 rounded-md">
         <div className="flex justify-end">

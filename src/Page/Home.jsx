@@ -12,11 +12,12 @@ import useEmployee from "../Hook/useEployee";
 import EmployeeHome from "../EmployeeHome/EmployeeHome";
 import { Helmet } from "react-helmet-async";
 import UserHome from "../HomeComponent/UserHome";
+import Loading from "../Loading/Loading";
 const Home = () => {
-  const { user} = useAuth();
+  const { user, loading} = useAuth();
   const [role] = useEmployee();
   const hrRole = useHRRole();
-  // if(loading) return<Loading></Loading>
+  if(loading) return<Loading></Loading>
   return (
     <div>
       <Helmet>

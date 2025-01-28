@@ -9,6 +9,7 @@ const TopRequest = () => {
     const {user, loading} = useAuth()
     const { data: topRequest = [] } = useQuery({
         queryKey: ["topRequest", user?.email],
+        enabled: !loading && !!user?.email && !!localStorage.getItem("access-token"),
         queryFn: async () => {
           const { data } = await axiosSecure(
             `/toprequest/${user?.email}`

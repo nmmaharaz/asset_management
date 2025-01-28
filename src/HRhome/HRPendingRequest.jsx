@@ -8,6 +8,7 @@ const HRPendingRequest = () => {
     const { user, loading } = useAuth();
     const { data: HrtopRequest = [] } = useQuery({
       queryKey: ["HrtopRequest", user?.email],
+      enabled: !loading && !!user?.email && !!localStorage.getItem("access-token"),
       queryFn: async () => {
         const { data } = await axiosSecure(`/hrtoppending/${user?.email}`);
         return data;

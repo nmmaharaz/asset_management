@@ -10,6 +10,7 @@ const Returnable_non = () => {
   const { user, loading } = useAuth();
   const { data: Returnable = [] } = useQuery({
     queryKey: ["Returnable", user?.email],
+    enabled: !loading && !!user?.email && !!localStorage.getItem("access-token"),
     queryFn: async () => {
       const { data } = await axiosSecure(`/return/${user?.email}`);
       return data;
@@ -17,6 +18,7 @@ const Returnable_non = () => {
   });
   const { data: NonReturnable = [] } = useQuery({
     queryKey: ["NonReturnable", user?.email],
+    enabled: !loading && !!user?.email && !!localStorage.getItem("access-token"),
     queryFn: async () => {
       const { data } = await axiosSecure(`/nonreturn/${user?.email}`);
       return data;
