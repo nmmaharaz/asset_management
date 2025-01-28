@@ -7,24 +7,24 @@ import { axiosSecure } from "../Hook/useAxiosSecure";
 import MyAssetsTable from "./EmployeeComponent/MyAssetsTable";
 import { Helmet } from "react-helmet";
 import useEmployee from "../Hook/useEployee";
+// import Loading from "../Loading/Loading";
 
 const MyAssets = () => {
-  const { user } = useAuth();
+  const { user, } = useAuth();
   const [role] = useEmployee();
   const [search, setSearch] = useState("");
   const [type, setAssetType] = useState("");
   const [availability, setAvailability] = useState("");
-  const [loading, setLoading] = useState(true);
 
   const { data: myAssistData, refetch: reset } = useQuery({
     queryKey: ["myAssistData",type,availability],
     queryFn: async () => {
       const { data } = await axiosSecure(`/allasset/${user?.email}?search=${search}&type=${type}&availability=${availability}`);
-      setLoading(false);
       return data;
     },
   });
-  console.log(myAssistData, "vai ami hr");
+
+
 
   return (
     <div className="w-11/12 mt-12 mx-auto">

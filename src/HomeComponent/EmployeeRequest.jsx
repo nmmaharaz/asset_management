@@ -3,7 +3,6 @@ import { Modal } from "flowbite-react";
 import useAuth from "../Hook/useAtuh";
 import { format } from "date-fns";
 import Swal from "sweetalert2";
-// import { useRef } from "react";
 
 const EmployeeRequest = ({ asset, reset, openModal, setOpenModal }) => {
   const { user } = useAuth();
