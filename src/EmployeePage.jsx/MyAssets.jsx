@@ -5,9 +5,12 @@ import axios from "axios";
 import EmployeeAssets from "./EmployeeComponent/EmployeeAssets";
 import { axiosSecure } from "../Hook/useAxiosSecure";
 import MyAssetsTable from "./EmployeeComponent/MyAssetsTable";
+import { Helmet } from "react-helmet";
+import useEmployee from "../Hook/useEployee";
 
 const MyAssets = () => {
   const { user } = useAuth();
+  const [role] = useEmployee();
   const [search, setSearch] = useState("");
   const [type, setAssetType] = useState("");
   const [availability, setAvailability] = useState("");
@@ -25,7 +28,11 @@ const MyAssets = () => {
 
   return (
     <div className="w-11/12 mt-12 mx-auto">
-      <div className="mb-4 bg-white flex flex-col justify-between sm:flex-row p-4 shadow-md rounded-t-xl">
+      <Helmet>
+        <title>Safe Asset || My Assets</title>
+      </Helmet>
+      {
+        role === "Employee" ? <><div className="mb-4 bg-white flex flex-col justify-between sm:flex-row p-4 shadow-md rounded-t-xl">
         <div>
           <div className="relative">
             <span className="absolute inset-y-0 left-0 flex items-center pl-2">
@@ -74,20 +81,20 @@ const MyAssets = () => {
           </select>
         </div>
       </div>
-      {/* <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-        {myAssistData?.map((asset) => (
-          <EmployeeAssets
-            key={asset._id}
-            reset={reset}
-            asset={asset}
-          ></EmployeeAssets>
-        ))}
-      </div> */}
 
       <div>
         <MyAssetsTable reset={reset}
              myAssistData={myAssistData}></MyAssetsTable>
+      </div></>:
+      <>
+      <div className="flex justify-center items-center">
+        <div className="text-center">
+          <p className="text-2xl font-semibold">You are not affilicated with any company</p>
+          <p className="text-gray-600">please contact your HR depertment for assistance</p>
+        </div>
       </div>
+      </>
+      }
     </div>
   );
 };

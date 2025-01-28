@@ -5,9 +5,12 @@ import axios from "axios";
 import Request from "../HomeComponent/Request";
 import { axiosSecure } from "../Hook/useAxiosSecure";
 import RequestTable from "./EmployeeComponent/RequestTable";
+import { Helmet } from "react-helmet";
+import useEmployee from "../Hook/useEployee";
 
 const MyRequest = () => {
   const { user } = useAuth();
+  const [role] = useEmployee();
   const [search, setSearch] = useState("");
   const [type, setAssetType] = useState("");
   const [status, setStatus] = useState("")
@@ -26,7 +29,11 @@ const MyRequest = () => {
   console.log(requestData, "requested data");
   return (
     <div className="w-11/12 mx-auto my-7">
-      <div className="mb-4 bg-white flex flex-col justify-between sm:flex-row p-4 shadow-md rounded-t-xl">
+      <Helmet>
+        <title>Safe Asset || My Request</title>
+      </Helmet>
+      {
+        role === "Employee" ? <><div className="mb-4 bg-white flex flex-col justify-between sm:flex-row p-4 shadow-md rounded-t-xl">
         <div>
           <div className="relative">
             <span className="absolute inset-y-0 left-0 flex items-center pl-2">
@@ -75,19 +82,18 @@ const MyRequest = () => {
           </select>
         </div>
       </div>
-      {/* <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-        {requestData?.map((request) => (
-          <Request
-            key={request._id}
-            request={request}
-            refetch={refetch}
-          ></Request>
-        ))}
-      </div> */}
-
-      <div>
+         <div>
         <RequestTable refetch={refetch} requestData={requestData}></RequestTable>
+      
+      </div></>:<>
+      <div className="flex justify-center items-center">
+        <div className="text-center">
+          <p className="text-2xl font-semibold">You are not affilicated with any company</p>
+          <p className="text-gray-600">please contact your HR depertment for assistance</p>
+        </div>
       </div>
+      </>
+      }
     </div>
   );
 };

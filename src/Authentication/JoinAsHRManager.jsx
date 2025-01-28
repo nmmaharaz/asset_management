@@ -11,10 +11,14 @@ import UploadImage from "./image/UploadImage";
 import { imageUpload } from "../Imagebb/Imagebb";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const JoinAsHRManager = () => {
   const { signUp, googlesignin, updateUserProfile } = useAuth();
   const navigate = useNavigate();
+  const [errormassage, setErrorMassage] = useState("");
+  const [showPassword, setShowPassword] = useState(false)
    
   const plans = [
     { name: "5 Members for $5", value: 5 },
@@ -37,6 +41,22 @@ const JoinAsHRManager = () => {
     const companylogo = formData.companylogo.files[0];
     const company_logo = await imageUpload(companylogo);
     console.log(company_logo, "this is company logo");
+    if (password.length < 7) {
+      setErrorMassage("Must be at least 6 characters");
+      return;
+    }
+
+    const uperCasePassword = /^(?=.*[A-Z]).+$/;
+    if (!uperCasePassword.test(password)) {
+      setErrorMassage("Must contain at least 1 in Capital Case");
+      return;
+    }
+
+    const lowerCasePassword = /^(?=.*[a-z]).+$/;
+    if (!lowerCasePassword.test(password)) {
+      setErrorMassage("Must contain at least 1 in lower case");
+      return;
+    }
     signUp(email, password)
       .then((result) => {
         updateUserProfile(name, user_photo);
@@ -61,14 +81,12 @@ const JoinAsHRManager = () => {
         toast.error("Already create this account!");
       });
   };
-//   const handleGoogleSignUp = ()=>{
-//     googlesignin()
-//     .then(result=>{
-//       navigate("/payment")
-//     })
-// }
+
   return (
     <div>
+      <Helmet>
+        <title>Safe Asset || Join HR</title>
+      </Helmet>
       <div>
         <div className="w-full mx-auto mt-7 max-w-md p-8 space-y-3 rounded-xl bg-purple-100 dark:text-gray-800">
           <h1 className="text-2xl font-bold text-center">Join as HR Manager</h1>
@@ -136,19 +154,18 @@ const JoinAsHRManager = () => {
               <label htmlFor="password" className="block dark:text-gray-600">
                 Password
               </label>
-              <input
-                type="password"
+              <div className="relative">
+                <input
+                type={showPassword?'text':'password'}
                 name="password"
                 id="password"
                 required
                 placeholder="Password"
                 className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
               />
-              <div className="flex justify-end text-xs dark:text-gray-600">
-                <a rel="noopener noreferrer" href="#">
-                  Forgot Password?
-                </a>
+              {showPassword ? <FaEye onClick={()=>setShowPassword(!showPassword)} className="absolute right-3 cursor-pointer top-[40%]" />:<FaEyeSlash onClick={()=>setShowPassword(!showPassword)}  className="absolute right-3 cursor-pointer top-[40%]" />}
               </div>
+              {errormassage && <p className="text-red-700">{errormassage}</p>}
             </div>
             <div className="space-y-1 text-sm">
               <label htmlFor="fullname" className="block dark:text-gray-600">

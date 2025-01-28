@@ -139,7 +139,19 @@ const AllRequestTable = ({ allRequest, reset }) => {
                         {row?.additional_rule}
                       </TableCell>
                       <TableCell className="text-center">
-                        <p>{row?.request_status}</p>
+                        <p className={`text-center ${
+                          row.request_status == "Approved" &&
+                          "text-green-500 font-semibold"
+                        } ${
+                          row.request_status == "Rejected" &&
+                          "text-red-400 font-semibold"
+                        } ${
+                          row.request_status == "Pending" &&
+                          "text-blue-600 font-semibold"
+                        } ${
+                          row.request_status == "Returned" &&
+                          "text-orange-400 font-semibold"
+                        }`}>{row?.request_status}</p>
                       </TableCell>
                       <TableCell
                         sx={{ paddingRight: "20px" }}

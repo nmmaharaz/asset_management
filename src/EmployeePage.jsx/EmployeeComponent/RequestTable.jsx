@@ -24,7 +24,7 @@ const RequestTable = ({ requestData, refetch }) => {
     try {
       const { data } = await axiosSecure.patch(`/request/${_id}`, updateData);
       console.log(data, "o data");
-      toast.success("Employee account signup successfully");
+      toast.success("Return this assts");
       refetch();
     } catch (error) {
       console.log(error);
@@ -84,7 +84,7 @@ const RequestTable = ({ requestData, refetch }) => {
                 <TableCell className="lg:w-32 text-right">
                   Request Status
                 </TableCell>
-                <TableCell className="lg:w-32 text-right">Action</TableCell>
+                <TableCell className="lg:w-40 text-right">Action</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -112,8 +112,8 @@ const RequestTable = ({ requestData, refetch }) => {
                       <TableCell className="text-center">
                         {row?.approval_date}
                       </TableCell>
-                      <TableCell
-                        className={`text-center ${
+                      <TableCell>
+                        <p className={`text-center ${
                           row.request_status == "Approved" &&
                           "text-green-500 font-semibold"
                         } ${
@@ -125,11 +125,12 @@ const RequestTable = ({ requestData, refetch }) => {
                         } ${
                           row.request_status == "Returned" &&
                           "text-orange-400 font-semibold"
-                        }`}
-                      >
+                        }`}>
                         {row?.request_status}
+                        </p>
                       </TableCell>
                       <TableCell className="text-center">
+                        <div className="flex gap-3">
                         {row?.request_status == "Pending" ? (
                           <button
                             onClick={() => handleDelete(row?._id)}
@@ -157,6 +158,7 @@ const RequestTable = ({ requestData, refetch }) => {
                         ) : (
                           ""
                         )}
+                        </div>
                       </TableCell>
                     </TableRow>
                   ))

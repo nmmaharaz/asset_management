@@ -4,6 +4,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { format } from "date-fns";
 import { axiosSecure } from "../Hook/useAxiosSecure";
+import { Helmet } from "react-helmet";
 
 const AddAsset = () => {
   const { user } = useAuth();
@@ -28,6 +29,9 @@ const AddAsset = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Safe Asset || Add Asset</title>
+      </Helmet>
       <section className="p-6 w-11/12 sm:9/12 lg:w-7/12 mx-auto dark:text-gray-900">
         <form
           onSubmit={handleSubmitAsset}

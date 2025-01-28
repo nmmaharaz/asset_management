@@ -7,7 +7,7 @@ import useAuth from "../Hook/useAtuh";
 import { toast } from "react-toastify";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { data } from "react-router-dom";
+import { data, useNavigate } from "react-router-dom";
 import Loading from "../Loading/Loading";
 import { axiosPublic } from "../Hook/useAxiosPublic";
 
@@ -19,6 +19,7 @@ const CheckoutForm = () => {
   const [totalPrice, setTimePrice] = useState(0);
   const [increseLimit, setIncreseLimit] = useState(0);
   const [processing, setProcessing] = useState(false);
+  const navigate = useNavigate()
   const { data: HREmployee, refetch: reset } = useQuery({
     queryKey: ["HREmployee"],
     queryFn: async () => {
@@ -40,13 +41,6 @@ const CheckoutForm = () => {
     }
   }, [totalPrice]);
 
-  // if(totalPrice === 8){
-  //   setIncreseLimit(10)
-  // }
-  // }
-  // if(totalPrice === 15){
-  //   setIncreseLimit(20)
-  // }
 
   
   useEffect(() => {
@@ -118,8 +112,11 @@ const CheckoutForm = () => {
           limit: increseLimit
         };
         await axiosSecure.post("/order", paymentInfo);
+        navigate("/addemployee")
         toast.success("Buy Now Successful!");
+
       } catch (err) {
+        toast.error("Try again!")
         console.log(err);
       } finally {
         setProcessing(false);

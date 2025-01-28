@@ -80,25 +80,19 @@ const router = createBrowserRouter([
       {
         path: "/myassets",
         element: (
-          <Employee>
             <MyAssets></MyAssets>
-          </Employee>
         ),
       },
       {
         path: "/myrequest",
         element: (
-          <Employee>
             <MyRequest></MyRequest>
-          </Employee>
         ),
       },
       {
         path: "/myteam",
         element: (
-          <Employee>
             <MyTeam></MyTeam>
-          </Employee>
         ),
       },
       {

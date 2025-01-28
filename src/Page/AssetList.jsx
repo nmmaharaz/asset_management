@@ -6,6 +6,7 @@ import axios from "axios";
 import Asset from "../Shered/Asset";
 import { axiosSecure } from "../Hook/useAxiosSecure";
 import AssetsListTable from "../Shered/AssetsListTable";
+import { Helmet } from "react-helmet";
 
 const AssetList = () => {
   const { user, loading } = useAuth();
@@ -36,6 +37,9 @@ const AssetList = () => {
   console.log("Asset List", allAssets);
   return (
     <div className="w-10/12 mx-auto">
+      <Helmet>
+        <title>Safe Asset || Asset List</title>
+      </Helmet>
       <div className="mb-4 bg-white flex flex-col justify-between sm:flex-row p-4 shadow-md rounded-t-xl">
         <div>
           <div className="relative">

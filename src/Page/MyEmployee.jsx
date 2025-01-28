@@ -7,6 +7,7 @@ import { axiosSecure } from "../Hook/useAxiosSecure";
 import PackagePayment from "./PackagePayment";
 import Loading from "../Loading/Loading";
 import MyEmployeeTable from "../Shered/MyEmployeeTable";
+import { Helmet } from "react-helmet";
 
 const MyEmployee = () => {
     const {user, loading} = useAuth()
@@ -36,6 +37,9 @@ const MyEmployee = () => {
      if(loading) return<Loading></Loading>
     return (
         <div className="w-11/12 mx-auto">
+          <Helmet>
+        <title>Safe Asset || My Employee</title>
+      </Helmet>
          <div className="bg-white py-3 rounded-t-xl mb-4">
          <div className="px-11 flex flex-col sm:flex-row items-center justify-between">
         <div>

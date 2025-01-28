@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../Hook/useAtuh";
 import useEmployee from "../../Hook/useEployee";
 import useHRRole from "../../Hook/useHRRole";
@@ -15,9 +15,10 @@ const Navbar = () => {
   const email = user?.email
   const [role] = useEmployee();
   const hrRole = useHRRole();
-  console.log(hrRole[0], "hellow");
+  const navigate = useNavigate()
   const handleLogout = () => {
     log0ut();
+    navigate("/")
   };
   const { data: hrData = [], refetch } = useQuery({
     queryKey: ["hrData", user?.email],
@@ -72,7 +73,7 @@ const Navbar = () => {
 
             {hrRole[0] || role ? (
               <>
-                {role === "Employee" && (
+                {role === "Employee"  && (
                   <>
                     {" "}
                     <NavLink
@@ -93,7 +94,42 @@ const Navbar = () => {
                         }`
                       }
                     >
-                      Request For an Assets
+                      Request Assets
+                    </NavLink>
+                    <NavLink
+                      to="/myassets"
+                      className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }
+                    >
+                      My Assets
+                    </NavLink>
+                  </>
+                )}
+                {role === "User"  && (
+                  <>
+                    {" "}
+                    <NavLink
+                      to="/myteam"
+                      className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }
+                    >
+                      My Team
+                    </NavLink>
+                    <NavLink
+                      to="/myrequest"
+                      className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }
+                    >
+                      Request Assets
                     </NavLink>
                     <NavLink
                       to="/myassets"
@@ -217,31 +253,7 @@ const Navbar = () => {
                     </NavLink>
                   </>
                 )}
-                {role === "User" && (
-                  <>
-                    {" "}
-                    <NavLink
-                      to="/joinasemployee"
-                      className={({ isActive }) =>
-                        `hoovereffect ${
-                          isActive ? "text-[#8750f7]" : "text-black"
-                        }`
-                      }
-                    >
-                      Join as Employee
-                    </NavLink>
-                    <NavLink
-                      to="/joinashrmanager"
-                      className={({ isActive }) =>
-                        `hoovereffect ${
-                          isActive ? "text-[#8750f7]" : "text-black"
-                        }`
-                      }
-                    >
-                      Join as HR Manager
-                    </NavLink>
-                  </>
-                )}
+                
               </>
             ) : (
               <>

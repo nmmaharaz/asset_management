@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import useAxiosSecure from "../Hook/useAxiosSecure";
 import AllRequestTable from "../Shered/AllRequestTable";
+import { Helmet } from "react-helmet";
 
 const AllRequest = () => {
     const { user } = useAuth();
@@ -26,6 +27,9 @@ const AllRequest = () => {
   console.log(allRequest, "vai ami hr")
   return (
     <div>
+      <Helmet>
+        <title>Safe Asset || All Request</title>
+      </Helmet>
         <div className="container p-2 mx-auto sm:p-4 dark:text-gray-800">
         <div className="mb-4 bg-white flex justify-center p-4 shadow-md rounded-t-xl">
           <div className="relative">

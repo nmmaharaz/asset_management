@@ -4,6 +4,7 @@ import useAuth from "../Hook/useAtuh";
 import SignUpGoogle from "./SignUpGoogle";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const { signIn } = useAuth();
@@ -20,7 +21,7 @@ const Login = () => {
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: "Your work has been saved",
+          title: "Login Successfully",
           showConfirmButton: false,
           timer: 1000,
         });
@@ -33,6 +34,9 @@ const Login = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Safe Asset || Login</title>
+      </Helmet>
       <ToastContainer />
       <div className="w-full mx-auto my-7 max-w-md p-8 space-y-3 rounded-xl bg-purple-100 dark:text-gray-800">
         <h1 className="text-2xl font-bold text-center">Login</h1>

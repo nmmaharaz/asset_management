@@ -16,7 +16,7 @@ const PendingRequest = () => {
     console.log(topRequest, "this is top")
     return (
         <div>
-        <div className="w-11/12 min-h-[600px] mt-4 mx-auto p-2 bg-white border border-gray-200 rounded-md">
+        <div className="w-11/12 min-h-[600px] mt-4 lg:mt-0 mx-auto p-2 bg-white border border-gray-200 rounded-md">
           <div className="flex justify-end">
             <Link
               to="/myrequest"

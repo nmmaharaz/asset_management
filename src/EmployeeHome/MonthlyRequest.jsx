@@ -18,7 +18,7 @@ const MonthlyRequest = () => {
   if (loading) return <Loading></Loading>;
   return (
     <div>
-      <div className="w-11/12  min-h-[600px] mt-8 mx-auto p-2 bg-white border border-gray-200 rounded-md">
+      <div className="w-11/12  min-h-[600px] mt-8 lg:mt-0 mx-auto p-2 bg-white border border-gray-200 rounded-md">
         <div className="flex justify-end">
           <Link
             to="/myrequest"

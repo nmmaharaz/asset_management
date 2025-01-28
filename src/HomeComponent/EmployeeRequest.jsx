@@ -9,7 +9,6 @@ const EmployeeRequest = ({ asset, reset, openModal, setOpenModal }) => {
   const { user } = useAuth();
   const { _id, product_name, product_type, product_quantity, added_date, hr_email } =
     asset || [];
-  // const noteRef = useRef()
   const handleSubmitRequest = async (e) => {
     e.preventDefault();
     const additional_rule = e.target.additional_rule.value;
@@ -36,7 +35,7 @@ const EmployeeRequest = ({ asset, reset, openModal, setOpenModal }) => {
     Swal.fire({
               position: "top-end",
               icon: "success",
-              title: "Your work has been saved",
+              title: "Request Successfullye",
               showConfirmButton: false,
               timer: 1000,
             });

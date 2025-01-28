@@ -2,6 +2,7 @@ import { FiEdit } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import EmployeeRequest from "../../HomeComponent/EmployeeRequest";
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 
 const EmployeeAssets = ({asset, reset}) => {
     const { _id, product_name, product_type, product_quantity, added_date } =
@@ -9,6 +10,9 @@ const EmployeeAssets = ({asset, reset}) => {
     const [openModal, setOpenModal] = useState(false);
     return (
         <div className="flex shadow-md overflow-hidden rounded-lg dark:bg-gray-50 dark:text-gray-800">
+      <Helmet>
+        <title>Safe Asset || Employee Assets</title>
+      </Helmet>
       <div className="flex items-center justify-center px-4 bg-violet-600 text-gray-100">
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -11,15 +11,20 @@ import Loading from "../Loading/Loading";
 import HRhome from "../HRhome/HRhome";
 import useEmployee from "../Hook/useEployee";
 import EmployeeHome from "../EmployeeHome/EmployeeHome";
+import { Helmet } from "react-helmet-async";
+import UserHome from "../HomeComponent/UserHome";
 const Home = () => {
   const { user, loading } = useAuth();
   const [role] = useEmployee();
   const hrRole = useHRRole();
-  
+
   // const [role] = useEmployee();
   // if(loading) return <Loading></Loading>
   return (
     <div>
+      <Helmet>
+        <title>Safe Asset || Home</title>
+      </Helmet>
       {hrRole[0] === "HR_Request" ||
         (!user?.email && (
           <>
@@ -31,14 +36,15 @@ const Home = () => {
           </>
         ))}
 
-        {
-          hrRole[0] === "HR" && <>
+      {hrRole[0] === "HR" && (
+        <>
           <HRhome></HRhome>
-          </>
-        }
-        {
-          role === "Employee" && <EmployeeHome></EmployeeHome>
-        }
+        </>
+      )}
+      {role === "Employee" && <EmployeeHome></EmployeeHome>}
+      {
+        role == "User" && <UserHome></UserHome>
+      }
     </div>
   );
 };
