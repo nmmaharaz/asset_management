@@ -17,11 +17,13 @@ import AllRequest from "../Page/allrequest";
 import PackagePayment from "../Page/PackagePayment";
 import Package from "../HomeComponent/Package";
 import Profile from "../Profile/Profile";
+import Error from "../Components/Shered/Error";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement:<Error></Error>,
     children: [
       {
         path: "/",

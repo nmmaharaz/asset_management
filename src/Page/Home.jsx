@@ -20,8 +20,6 @@ const Home = () => {
   // if(loading) return <Loading></Loading>
   return (
     <div>
-      {user?.email}
-      {user?.name}
       {hrRole[0] === "HR_Request" ||
         (!user?.email && (
           <>

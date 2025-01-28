@@ -14,7 +14,7 @@ const HRhome = () => {
       <Stat></Stat>
       <TopRequest></TopRequest>
       </div>
-      <div className="lg:grid lg:grid-cols-2">
+      <div className="lg:grid lg:grid-cols-3">
         <HRPendingRequest></HRPendingRequest>
       <LiimitedStock></LiimitedStock>
       <EmployeeList></EmployeeList>

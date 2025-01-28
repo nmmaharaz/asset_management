@@ -76,7 +76,7 @@ const AllStatus = () => {
     },
   };
 
-  return <div className="flex-1 mx-auto"><Bar data={data} options={options} /></div>;
+  return <div className="mt-4 lg:mt-0 flex-1 mx-auto"><Bar data={data} options={options} /></div>;
 };
 
 export default AllStatus;

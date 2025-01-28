@@ -64,7 +64,7 @@ const Returnable_non = () => {
     },
   };
 
-  return <div className="sm:w-[400px]"><Pie data={data} options={options} /></div>;
+  return <div className="mt-4 lg:mt-0 sm:w-[400px]"><Pie data={data} options={options} /></div>;
 };
 
 export default Returnable_non;
