@@ -6,8 +6,8 @@ import Loading from "../Loading/Loading";
 import { Helmet } from "react-helmet";
 const stripePromise = loadStripe(import.meta.env.VITE_PUBLIC_KEY);
 const PackagePayment = () => {
-  const { loading } = useAuth();
-  if (loading) return <Loading></Loading>;
+  // const { loading } = useAuth();
+  // if (loading) return <Loading></Loading>;
   return (
     <div className="mx-auto w-9/12 sm:w-6/12 lg:w-4/12">
       <Helmet>
