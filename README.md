@@ -55,5 +55,5 @@ Ensure you have the following installed on your machine:
 
 ### 1️⃣ Clone Repository
 ```sh
-git clone https://github.com/RahulKhanSuvo/assetpanda.git
+https://github.com/nmmaharaz/asset_management.git
 cd SafeAccet
