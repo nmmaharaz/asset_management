@@ -9,7 +9,7 @@ const MonthlyRequest = () => {
   const { user, loading } = useAuth();
   const { data: lastMonthRequest = [] } = useQuery({
     queryKey: ["lastMonthRequest", user?.email],
-    enabled: !!loading && !!user?.email && !!localStorage.getItem("access-token"),
+    enabled: !loading && !!user?.email && !!localStorage.getItem("access-token"),
     queryFn: async () => {
       const { data } = await axiosSecure(`/lastmonthrequest/${user?.email}`);
       return data;

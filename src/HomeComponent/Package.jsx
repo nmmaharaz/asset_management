@@ -7,7 +7,7 @@ const Package = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const handlePayment = async (money) => {
-	console.log(money, "this is money")
+	// console.log(money, "this is money")
     const updatePackage = {
       package: money,
     };

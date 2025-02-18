@@ -9,9 +9,9 @@ const AddEmployeeRow = ({ employee }) => {
       hr_email: user?.email,
       role: "Employee"
     }
-    console.log("this is email", user?.email)
+    // console.log("this is email", user?.email)
     const {data} = await axios.patch(`${import.meta.env.VITE_API_URL}/user/${email}`,updateUser)
-    console.log(data, "mama data dekhchi")
+    // console.log(data, "mama data dekhchi")
   }
   return (
     <tr className="border-b border-opacity-20 dark:border-gray-300 dark:bg-gray-50">

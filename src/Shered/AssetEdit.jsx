@@ -26,7 +26,7 @@ const AssetEdit = ({ setOpenModal, openModal, reload, asset }) => {
       product_quantity,
       added_date,
     };
-    console.log(assetData);
+    // console.log(assetData);
     const {data} = await axios.patch(`${import.meta.env.VITE_API_URL}/asset/${_id}`, assetData);
     toast.success("Asset edit successfully");
     reload()

@@ -1,14 +1,240 @@
+import { NavLink } from "react-router-dom";
+import useEmployee from "../../Hook/useEployee";
+import useHRRole from "../../Hook/useHRRole";
+import useAuth from "../../Hook/useAtuh";
+
 const Footer = () => {
+  const { user } = useAuth();
+  const [role] = useEmployee();
+  const hrRole = useHRRole();
   return (
     <div>
       <footer className="dark:bg-gray-100 dark:text-gray-900">
         <div className="container flex flex-col p-4 mx-auto md:p-8 lg:flex-row dark:divide-gray-600">
           <ul className="self-center py-6 space-y-4 text-center sm:flex sm:space-y-0 sm:justify-around sm:space-x-4 lg:flex-1 lg:justify-start">
-            <li>Shop</li>
-            <li>About</li>
-            <li>Blog</li>
-            <li>Pricing</li>
-            <li>Contact</li>
+          <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `hoovereffect ${isActive ? "text-[#8750f7]" : "text-black"}`
+              }
+            >
+              Home
+            </NavLink>
+
+            {hrRole[0] || role ? (
+              <>
+                {role === "Employee"  && (
+                  <>
+                    {" "}
+                    <NavLink
+                      to="/myteam"
+                      className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }
+                    >
+                      My Team
+                    </NavLink>
+                    <NavLink
+                      to="/myrequest"
+                      className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }
+                    >
+                      Request Assets
+                    </NavLink>
+                    <NavLink
+                      to="/myassets"
+                      className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }
+                    >
+                      My Assets
+                    </NavLink>
+                  </>
+                )}
+                {role === "User"  && (
+                  <>
+                    {" "}
+                    <NavLink
+                      to="/myteam"
+                      className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }
+                    >
+                      My Team
+                    </NavLink>
+                    <NavLink
+                      to="/myrequest"
+                      className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }
+                    >
+                      Request Assets
+                    </NavLink>
+                    <NavLink
+                      to="/myassets"
+                      className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }
+                    >
+                      My Assets
+                    </NavLink>
+                  </>
+                )}
+                {hrRole[0] === "HR" && (
+                  <>
+                    <NavLink
+                      to="/myemployeelist"
+                      className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }
+                    >
+                      My Employee List
+                    </NavLink>
+
+                    <NavLink
+                      to="/assetlist"
+                      className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }
+                    >
+                      Assets List
+                    </NavLink>
+                    <NavLink
+                      to="/addasset"
+                      className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }
+                    >
+                      Add an Assets
+                    </NavLink>
+                    <NavLink
+                      to="/allrequest"
+                      className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }
+                    >
+                      All Requests
+                    </NavLink>
+                    <NavLink
+                      to="/addemployee"
+                      className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }
+                    >
+                      Add an Employee
+                    </NavLink>
+                  </>
+                )}
+                {hrRole[0] === "HR_Request" && (
+                  <>
+                    <NavLink
+                      to="/myemployeelist"
+                      className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }
+                    >
+                      My Employee List
+                    </NavLink>
+
+                    <NavLink
+                      to="/assetlist"
+                      className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }
+                    >
+                      Assets List
+                    </NavLink>
+                    <NavLink
+                      to="/addasset"
+                      className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }
+                    >
+                      Add an Assets
+                    </NavLink>
+                    <NavLink
+                      to="/allrequest"
+                      className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }
+                    >
+                      All Requests
+                    </NavLink>
+                    <NavLink
+                      to="/addemployee"
+                      className={({ isActive }) =>
+                        `hoovereffect ${
+                          isActive ? "text-[#8750f7]" : "text-black"
+                        }`
+                      }
+                    >
+                      Add an Employee
+                    </NavLink>
+                  </>
+                )}
+                
+              </>
+            ) : (
+              <>
+                {" "}
+                <NavLink
+                  to="/joinasemployee"
+                  className={({ isActive }) =>
+                    `hoovereffect ${isActive ? "text-[#8750f7]" : "text-black"}`
+                  }
+                >
+                  Join as Employee
+                </NavLink>
+                <NavLink
+                  to="/joinashrmanager"
+                  className={({ isActive }) =>
+                    `hoovereffect ${isActive ? "text-[#8750f7]" : "text-black"}`
+                  }
+                >
+                 Join as HR Manager
+                </NavLink>
+              </>
+            )}
+           {
+            user?.email &&  <NavLink
+            to="/profile"
+            className={({ isActive }) =>
+              `hoovereffect ${isActive ? "text-[#8750f7]" : "text-black"}`
+            }
+          >
+            Profile
+          </NavLink>}
           </ul>
           <div className="flex flex-col justify-center pt-6 lg:pt-0">
             <div className="flex justify-center space-x-4">

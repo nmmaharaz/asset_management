@@ -46,7 +46,7 @@ const Stat = () => {
           return data;
         },
       });
-    console.log(totalReturned, "total req")
+    // console.log(totalReturned, "total req")
 
   return (
     <div>
@@ -67,7 +67,7 @@ const Stat = () => {
             </div>
             <div className="flex flex-col justify-center align-middle">
               <p className="text-3xl font-semibold leading-none">{totalApproved?.length}</p>
-              <p className="capitalize">Orders</p>
+              <p className="capitalize">total Approved </p>
             </div>
           </div>
           <div className="flex bg-[#fff6f2] border shadow-md hover:shadow-purple-200 border-white p-4 space-x-4 rounded-lg md:space-x-6  text-gray-800">
@@ -76,7 +76,7 @@ const Stat = () => {
             </div>
             <div className="flex flex-col justify-center align-middle">
               <p className="text-3xl font-semibold leading-none">{totalRejected?.length}</p>
-              <p className="capitalize">Orders</p>
+              <p className="capitalize">total Rejected</p>
             </div>
           </div>
           <div className="flex bg-[#fff6f2] border shadow-md hover:shadow-purple-200 border-white p-4 space-x-4 rounded-lg md:space-x-6  text-gray-800">
@@ -85,7 +85,7 @@ const Stat = () => {
             </div>
             <div className="flex flex-col justify-center align-middle">
               <p className="text-3xl font-semibold leading-none">{totalReturned?.length}</p>
-              <p className="capitalize">Orders</p>
+              <p className="capitalize">total Returned</p>
             </div>
           </div>
         </div>

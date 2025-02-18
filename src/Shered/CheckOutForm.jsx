@@ -46,9 +46,9 @@ const CheckoutForm = () => {
     getPaymentIntent();
   }, [HREmployee?.package]);
   
-  console.log(increseLimit, "this is limit");
+  // console.log(increseLimit, "this is limit");
   const getPaymentIntent = async () => {
-    console.log(total, "this is tk");
+    // console.log(total, "this is tk");
     try {
       const { data } = await axiosPublic.post("/create-payment-intent", {
         email: user?.email,

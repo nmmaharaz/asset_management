@@ -23,7 +23,7 @@ const Request = ({ request, refetch }) => {
         `/request/${_id}`,
         updateData
       );
-      console.log(data, "o data")
+      // console.log(data, "o data")
       toast.success("Employee account signup successfully");
       refetch();
     } catch (error) {

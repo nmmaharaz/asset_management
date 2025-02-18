@@ -15,7 +15,7 @@ const useEmployee = () => {
       const { data } = await axiosSecure(
         `/employee/role/${user?.email}`
       );
-      console.log("data data data", data);
+      // console.log("data data data", data);
       return data.role;
     },
   });

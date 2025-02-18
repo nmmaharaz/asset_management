@@ -290,7 +290,8 @@ const Navbar = () => {
           >
             Profile
           </NavLink>
-           }
+           },
+           <Link to="/deshboard">Deshboard</Link>
           </ul>
           <div className="items-center flex-shrink-0 hidden lg:flex">
             {
@@ -308,6 +309,8 @@ const Navbar = () => {
             </button>
             }
           </div>
+
+          
           <div className="dropdown lg:hidden">
             <div tabIndex={0} role="button" className="p-4 lg:hidden">
               <svg

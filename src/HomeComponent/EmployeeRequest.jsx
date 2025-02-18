@@ -12,7 +12,7 @@ const EmployeeRequest = ({ asset, reset, openModal, setOpenModal }) => {
     e.preventDefault();
     const additional_rule = e.target.additional_rule.value;
     const request_date  = new Date();
-    console.log(additional_rule, "This is eta");
+    // console.log(additional_rule, "This is eta");
     const assetRequest = {
       asset_id: _id,
       email: user?.email,

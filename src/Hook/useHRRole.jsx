@@ -16,7 +16,7 @@ const useHRRole = () => {
       return data.role;
     },
   });
- console.log(loading, "load")
+//  console.log(loading, "load")
   return [role, isLoading];
 };
 

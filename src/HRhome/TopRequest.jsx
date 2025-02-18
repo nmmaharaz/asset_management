@@ -24,7 +24,7 @@ const TopRequest = () => {
             setTopReq(products?.slice(0, 4))
         }
       },[topRequest])
-      console.log(topReq, "vai")
+      // console.log(topReq, "vai")
       if(loading) return<Loading></Loading>
     return (
         <div className="w-11/12 mx-auto p-2 bg-white border border-gray-200 rounded-md">

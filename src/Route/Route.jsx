@@ -18,6 +18,7 @@ import PackagePayment from "../Page/PackagePayment";
 import Package from "../HomeComponent/Package";
 import Profile from "../Profile/Profile";
 import Error from "../Components/Shered/Error";
+import Deshboard from "../Page/Deshboard";
 
 const router = createBrowserRouter([
   {
@@ -110,6 +111,10 @@ const router = createBrowserRouter([
       {
         path:"/profile",
         element: <Profile></Profile>
+      },
+      {
+        path:"/deshboard",
+        element: <Deshboard></Deshboard>
       }
     ],
   },

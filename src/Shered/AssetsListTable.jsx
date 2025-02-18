@@ -18,7 +18,7 @@ import AssetEdit from "./AssetEdit";
 const AssetsListTable = ({ allAssets, reload }) => {
   const [openModal, setOpenModal] = useState(false);
   const [asset, setAsset] = useState("");
-  console.log(asset, "assets");
+  // console.log(asset, "assets");
 
   const handleDelete = async (_id) => {
     Swal.fire({
