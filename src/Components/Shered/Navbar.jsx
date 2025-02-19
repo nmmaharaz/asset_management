@@ -4,7 +4,7 @@ import useEmployee from "../../Hook/useEployee";
 import useHRRole from "../../Hook/useHRRole";
 import "./Navbar.css";
 import Loading from "../../Loading/Loading";
-import { LogIn, LogOut } from "lucide-react";
+import { LogIn } from "lucide-react";
 import logo from "../../assets/safeasset.png"
 import { axiosSecure } from "../../Hook/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
