@@ -1,4 +1,4 @@
-// import { toast } from "react-toastify";
+
 import { toast, ToastContainer } from "react-toastify";
 import useAuth from "../Hook/useAtuh";
 import SignUpGoogle from "./SignUpGoogle";
