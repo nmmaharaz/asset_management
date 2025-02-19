@@ -8,7 +8,7 @@ import { LogIn } from "lucide-react";
 import logo from "../../assets/safeasset.png"
 import { axiosSecure } from "../../Hook/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-import { axiosPublic } from "../../Hook/useAxiosPublic";
+// import { axiosPublic } from "../../Hook/useAxiosPublic";
 
 const Navbar = () => {
   const { user,  log0ut, loading } = useAuth();
