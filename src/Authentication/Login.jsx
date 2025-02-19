@@ -8,8 +8,13 @@ import { Helmet } from "react-helmet";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import loginimage from "../assets/Secure login-rafiki.png"
+import useHRRole from "../Hook/useHRRole";
+import useEmployee from "../Hook/useEployee";
+import Deshboard from "../Page/Deshboard";
 
 const Login = () => {
+  const [role] = useEmployee();
+  const hrRole = useHRRole();
   const { signIn } = useAuth();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false)
@@ -28,6 +33,8 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1000,
         });
+        if(role === "Employee") <Deshboard></Deshboard>
+        if(hrRole[0] === "HR")<Deshboard></Deshboard>
         navigate("/");
       })
       .catch((error) => {

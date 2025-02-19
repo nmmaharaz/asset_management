@@ -9,7 +9,6 @@ import AddAnEmployee from "../Page/AddAnEmployee";
 import MyEmployee from "../Page/MyEmployee";
 import AddAsset from "../Page/AddAsset";
 import AssetList from "../Page/AssetList";
-import Employee from "../Hook/Employee";
 import MyAssets from "../EmployeePage.jsx/MyAssets";
 import MyRequest from "../EmployeePage.jsx/MyRequest";
 import MyTeam from "../EmployeePage.jsx/MyTeam";
@@ -19,6 +18,7 @@ import Package from "../HomeComponent/Package";
 import Profile from "../Profile/Profile";
 import Error from "../Components/Shered/Error";
 import Deshboard from "../Page/Deshboard";
+import Employee from "../Hook/Employee";
 
 const router = createBrowserRouter([
   {
@@ -114,7 +114,7 @@ const router = createBrowserRouter([
       },
       {
         path:"/deshboard",
-        element: <Deshboard></Deshboard>
+        element:<Employee><Deshboard></Deshboard></Employee>
       }
     ],
   },
