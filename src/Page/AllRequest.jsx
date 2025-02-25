@@ -22,7 +22,6 @@ const AllRequest = () => {
         return data
     },
   });
-  // console.log(allRequest, "vai ami hr")
   return (
     <div>
       <Helmet>
@@ -56,7 +55,7 @@ const AllRequest = () => {
           </div>
         </div>
         
-          <AllRequestTable reset={reset} allRequest={allRequest}></AllRequestTable>
+          <AllRequestTable loading={loading} reset={reset} allRequest={allRequest}></AllRequestTable>
         </div>
       </div>
   );

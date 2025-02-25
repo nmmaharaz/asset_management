@@ -9,7 +9,7 @@ import TopRequest from "./TopRequest";
 const HRhome = () => {
   return (
     <div className="bg-[#f8f9fa] ">
-      <div className="w-11/12 mx-auto">
+      <div className=" mx-auto">
       <div className="lg:grid lg:grid-cols-2">
       <Stat></Stat>
       <TopRequest></TopRequest>

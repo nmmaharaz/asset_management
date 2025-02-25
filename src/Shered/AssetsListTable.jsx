@@ -15,7 +15,8 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { axiosSecure } from "../Hook/useAxiosSecure";
 import Swal from "sweetalert2";
 import AssetEdit from "./AssetEdit";
-const AssetsListTable = ({ allAssets, reload }) => {
+import Loading from "../Loading/Loading";
+const AssetsListTable = ({ allAssets, loader, reload }) => {
   const [openModal, setOpenModal] = useState(false);
   const [asset, setAsset] = useState("");
   // console.log(asset, "assets");
@@ -52,6 +53,7 @@ const AssetsListTable = ({ allAssets, reload }) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
+  if(loader)return<Loading></Loading>
   return (
     <div>
       <Paper>

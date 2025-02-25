@@ -12,8 +12,9 @@ import {
   import { useState } from "react";
 import { axiosSecure } from "../Hook/useAxiosSecure";
 import Swal from "sweetalert2";
-  const MyEmployeeTable = ({Employee, refetch, reset}) => {
-  
+import Loading from "../Loading/Loading";
+  const MyEmployeeTable = ({Employee,loader, refetch, reset}) => {
+
     const handleRemove = async (email) => {
       const updateUser = {
         hr_email: "",
@@ -55,6 +56,7 @@ import Swal from "sweetalert2";
       setRowsPerPage(parseInt(event.target.value, 10));
       setPage(0);
     };
+    if(loader)return<Loading></Loading>
     return (
       <div>
         <Paper>

@@ -29,23 +29,10 @@ const MyTeam = () => {
       <Helmet>
         <title>Safe Asset || My Team</title>
       </Helmet>
-      {role === "Employee" ? (
+      {role === "Employee" && (
         <>
-          <div className="w-11/12 mx-auto my-7">
+          <div className="mx-auto">
             <TeamTable myAssistData={myAssistData} reset={reset}></TeamTable>
-          </div>
-        </>
-      ) : (
-        <>
-          <div className="flex justify-center items-center">
-            <div className="text-center">
-              <p className="text-2xl font-semibold">
-                You are not affilicated with any company
-              </p>
-              <p className="text-gray-600">
-                please contact your HR depertment for assistance
-              </p>
-            </div>
           </div>
         </>
       )}

@@ -11,6 +11,7 @@ import loginimage from "../assets/Secure login-rafiki.png"
 import useHRRole from "../Hook/useHRRole";
 import useEmployee from "../Hook/useEployee";
 import Deshboard from "../Page/Deshboard";
+import HRDeshboard from "../Page/HRDeshboard";
 
 const Login = () => {
   const [role] = useEmployee();
@@ -33,8 +34,8 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1000,
         });
-        if(role === "Employee") <Deshboard></Deshboard>
-        if(hrRole[0] === "HR")<Deshboard></Deshboard>
+        if(role === "Employee") return <Deshboard></Deshboard>
+        if(hrRole[0] === "HR") return <HRDeshboard></HRDeshboard>
         navigate("/");
       })
       .catch((error) => {

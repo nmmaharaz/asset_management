@@ -7,16 +7,12 @@ import AssetsListTable from "../Shered/AssetsListTable";
 import { Helmet } from "react-helmet";
 
 const AssetList = () => {
-  const { user, loading } = useAuth();
+  const { user} = useAuth();
   const [loader, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [type, setAssetType] = useState("");
   const [quantity, setQuentity] = useState("");
   const [sort, setSort] = useState(false)
-  // console.log(sort, "short ")
-  // console.log(quantity, "assets");
-  // console.log(search);
-  // const select = valuecl.value
   const {
     data: allAssets = [],
     isLoading,
@@ -31,10 +27,8 @@ const AssetList = () => {
       return data;
     },
   });
-  if (loading) return <Loading></Loading>;
-  // console.log("Asset List", allAssets);
   return (
-    <div className="w-10/12 mx-auto">
+    <div className="mx-auto">
       <Helmet>
         <title>Safe Asset || Asset List</title>
       </Helmet>
@@ -99,7 +93,7 @@ const AssetList = () => {
         </div>
       </div>
       <div className="bg-white p-4 rounded-b-xl">
-        <AssetsListTable allAssets={allAssets} reload={reload}></AssetsListTable>
+        <AssetsListTable loader={loader} allAssets={allAssets} reload={reload}></AssetsListTable>
       </div>
     </div>
   );

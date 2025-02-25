@@ -25,14 +25,13 @@ const MyRequest = () => {
       return data;
     },
   });
-  if(loading) return <Loading></Loading>
   return (
-    <div className="w-11/12 mx-auto my-7">
+    <div className="mx-auto">
       <Helmet>
         <title>Safe Asset || My Request</title>
       </Helmet>
       {
-        role === "Employee" ? <><div className="mb-4 bg-white flex flex-col justify-between sm:flex-row p-4 shadow-md rounded-t-xl">
+        role === "Employee" && <><div className="mb-4 bg-white flex flex-col justify-between sm:flex-row p-4 shadow-md rounded-t-xl">
         <div>
           <div className="relative">
             <span className="absolute inset-y-0 left-0 flex items-center pl-2">
@@ -82,16 +81,9 @@ const MyRequest = () => {
         </div>
       </div>
          <div>
-        <RequestTable refetch={refetch} requestData={requestData}></RequestTable>
+        <RequestTable loader={loader} refetch={refetch} requestData={requestData}></RequestTable>
       
-      </div></>:<>
-      <div className="flex justify-center items-center">
-        <div className="text-center">
-          <p className="text-2xl font-semibold">You are not affilicated with any company</p>
-          <p className="text-gray-600">please contact your HR depertment for assistance</p>
-        </div>
-      </div>
-      </>
+      </div></>
       }
     </div>
   );

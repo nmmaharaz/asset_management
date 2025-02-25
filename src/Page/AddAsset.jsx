@@ -33,7 +33,7 @@ const AddAsset = () => {
       <Helmet>
         <title>Safe Asset || Add Asset</title>
       </Helmet>
-      <section className="p-6 w-11/12 sm:9/12 lg:w-7/12 mx-auto dark:text-gray-900">
+      <section className="p-6 mx-auto dark:text-gray-900">
         <form
           onSubmit={handleSubmitAsset}
           noValidate=""

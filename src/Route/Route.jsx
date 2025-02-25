@@ -11,14 +11,18 @@ import AddAsset from "../Page/AddAsset";
 import AssetList from "../Page/AssetList";
 import MyAssets from "../EmployeePage.jsx/MyAssets";
 import MyRequest from "../EmployeePage.jsx/MyRequest";
-import MyTeam from "../EmployeePage.jsx/MyTeam";
+// import MyTeam from "../EmployeePage.jsx/MyTeam";
 import AllRequest from "../Page/allrequest";
 import PackagePayment from "../Page/PackagePayment";
 import Package from "../HomeComponent/Package";
 import Profile from "../Profile/Profile";
 import Error from "../Components/Shered/Error";
-import Deshboard from "../Page/Deshboard";
+// import Deshboard from "../Page/Deshboard";
 import Employee from "../Hook/Employee";
+import MyTeam from "../EmployeePage.jsx/MyTeam";
+import EmployeeHome from "../EmployeeHome/EmployeeHome";
+import Deshboard from "../Page/Deshboard";
+import HRDeshboard from "../Page/HRDeshboard";
 
 const router = createBrowserRouter([
   {
@@ -78,24 +82,32 @@ const router = createBrowserRouter([
           </HRRoute>
         ),
       },
+      
       {
-        path: "/myassets",
+        path: "/myteam", // Corrected relative path (instead of "/myteam")
         element: (
-            <MyAssets></MyAssets>
+          <Employee>
+            <MyTeam />
+          </Employee>
         ),
       },
       {
-        path: "/myrequest",
+        path: "/myassets", // Corrected relative path (instead of "/myassets")
         element: (
-            <MyRequest></MyRequest>
+          <Employee>
+            <MyAssets />
+          </Employee>
         ),
       },
       {
-        path: "/myteam",
+        path: "/myrequest", // Corrected relative path (instead of "/myrequest")
         element: (
-            <MyTeam></MyTeam>
+          <Employee>
+            <MyRequest />
+          </Employee>
         ),
       },
+      
       {
         path:"/payment",
         element:<PackagePayment></PackagePayment>
@@ -113,11 +125,25 @@ const router = createBrowserRouter([
         element: <Profile></Profile>
       },
       {
-        path:"/deshboard",
-        element:<Employee><Deshboard></Deshboard></Employee>
-      }
-    ],
+        path: "/dashboard",
+        element: (
+          <Employee>
+            <Deshboard></Deshboard>
+          </Employee>
+        ),
+      },
+      {
+        path: "/hrdashboard",
+        element: (
+          <HRRoute>
+            <HRDeshboard></HRDeshboard>
+          </HRRoute>
+        ),
+      },
+      
+          ],
   },
+  
  
 ]);
 

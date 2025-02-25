@@ -17,8 +17,9 @@ import { toast } from "react-toastify";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import PrintAsset from "./PrintAssset"
 import { format } from "date-fns";
+import Loading from "../../Loading/Loading";
 
-const RequestTable = ({ requestData, refetch }) => {
+const RequestTable = ({ requestData, loader, refetch }) => {
   const handleReturn = async (_id, asset_id) => {
     const updateData = {
       asset_id,
@@ -66,6 +67,8 @@ const RequestTable = ({ requestData, refetch }) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
+
+  if(loader) return <Loading></Loading>
 
   return (
     <div>

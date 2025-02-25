@@ -12,7 +12,7 @@ const Profile = () => {
     }
   return (
     <div className="mt-20">
-      <div className="flex bg-white flex-col p-6 mx-auto justify-center max-w-sm shadow-md rounded-xl">
+      <div className="flex bg-white flex-col px-6 py-20 mx-auto justify-center max-w-lg shadow-md rounded-xl">
         <img
           src={user?.photoURL}
           alt=""

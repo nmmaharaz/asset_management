@@ -15,11 +15,13 @@ const MyAssets = () => {
   const [search, setSearch] = useState("");
   const [type, setAssetType] = useState("");
   const [availability, setAvailability] = useState("");
+  const [loader, setLoader] = useState(true)
 
   const { data: myAssistData, refetch: reset } = useQuery({
     queryKey: ["myAssistData",type, availability, search, user?.email],
     queryFn: async () => {
       const { data } = await axiosSecure(`/allasset/${user?.email}?search=${search}&type=${type}&availability=${availability}`);
+      setLoader(false)
       return data;
     },
   });
@@ -27,12 +29,12 @@ const MyAssets = () => {
 
 
   return (
-    <div className="w-11/12 mt-12 mx-auto">
+    <div className="mx-auto">
       <Helmet>
         <title>Safe Asset || My Assets</title>
       </Helmet>
       {
-        role === "Employee" ? <><div className="mb-4 bg-white flex flex-col justify-between sm:flex-row p-4 shadow-md rounded-t-xl">
+        role === "Employee" && <><div className="mb-4 bg-white flex flex-col justify-between sm:flex-row p-4 shadow-md rounded-t-xl">
         <div>
           <div className="relative">
             <span className="absolute inset-y-0 left-0 flex items-center pl-2">
@@ -84,16 +86,9 @@ const MyAssets = () => {
 
       <div>
         <MyAssetsTable reset={reset}
+        loader={loader}
              myAssistData={myAssistData}></MyAssetsTable>
-      </div></>:
-      <>
-      <div className="flex justify-center items-center">
-        <div className="text-center">
-          <p className="text-2xl font-semibold">You are not affilicated with any company</p>
-          <p className="text-gray-600">please contact your HR depertment for assistance</p>
-        </div>
-      </div>
-      </>
+      </div></>
       }
     </div>
   );

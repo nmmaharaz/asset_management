@@ -12,7 +12,8 @@ import {
 import { format } from "date-fns";
 import { useState } from "react";
 import { axiosSecure } from "../Hook/useAxiosSecure";
-const AllRequestTable = ({ allRequest, reset }) => {
+import Loading from "../Loading/Loading";
+const AllRequestTable = ({ allRequest, loading, reset }) => {
 
     const handleApprove = async (_id) => {
         const date = new Date();
@@ -48,6 +49,9 @@ const AllRequestTable = ({ allRequest, reset }) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
+
+  if(loading) return<Loading></Loading>
+
   return (
     <div>
       <Paper>

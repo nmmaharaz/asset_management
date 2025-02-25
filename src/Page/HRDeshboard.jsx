@@ -2,7 +2,7 @@ import { useState } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../Hook/useAtuh";
 
-const Deshboard = () => {
+const HRDeshboard = () => {
   const {log0ut, user} = useAuth()
   const navigate = useNavigate()
   const [show, setShow] = useState(false);
@@ -189,32 +189,52 @@ const Deshboard = () => {
             </li>
             <li>
               <NavLink
-                to="/myteam"
+                to="/myemployeelist"
                 className={({ isActive }) =>
                   `hoovereffect ${isActive ? "text-[#8750f7]" : "text-black"}`
                 }
               >
-                My Team
+                My Employee List
               </NavLink>
             </li>
             <li>
               <NavLink
-                to="/myrequest"
+                to="/assetlist"
                 className={({ isActive }) =>
                   `hoovereffect ${isActive ? "text-[#8750f7]" : "text-black"}`
                 }
               >
-                Request Assets
+                Assets List
               </NavLink>
             </li>
             <li>
               <NavLink
-                to="/myassets"
+                to="/addasset"
                 className={({ isActive }) =>
                   `hoovereffect ${isActive ? "text-[#8750f7]" : "text-black"}`
                 }
               >
-                My Assets
+                Add an Asset
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/allrequest"
+                className={({ isActive }) =>
+                  `hoovereffect ${isActive ? "text-[#8750f7]" : "text-black"}`
+                }
+              >
+                All Requests
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/addemployee"
+                className={({ isActive }) =>
+                  `hoovereffect ${isActive ? "text-[#8750f7]" : "text-black"}`
+                }
+              >
+                Add an Employee
               </NavLink>
             </li>
             <li>
@@ -248,4 +268,4 @@ const Deshboard = () => {
   );
 };
 
-export default Deshboard;
+export default HRDeshboard;

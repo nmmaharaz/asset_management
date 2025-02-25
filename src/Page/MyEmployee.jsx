@@ -36,7 +36,7 @@ const MyEmployee = () => {
      })
      if(loading) return<Loading></Loading>
     return (
-        <div className="w-11/12 mx-auto">
+        <div className="mx-auto">
           <Helmet>
         <title>Safe Asset || My Employee</title>
       </Helmet>
@@ -78,7 +78,7 @@ const MyEmployee = () => {
             </table>
           </div>
         </div> */}
-  <MyEmployeeTable Employee={Employee} reset={reset} refetch={refetch} ></MyEmployeeTable>
+  <MyEmployeeTable Employee={Employee} reset={reset} refetch={refetch} loader={loader} ></MyEmployeeTable>
 
       </div>
     );

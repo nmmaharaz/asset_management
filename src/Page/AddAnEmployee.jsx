@@ -25,7 +25,6 @@ const AddAnEmployee = () => {
       return data;
     },
   });
-  // console.log(HREmployee, "vai ami hr");
 
   const {
     data: AddEmployee = [],
@@ -41,10 +40,8 @@ const AddAnEmployee = () => {
       return data;
     },
   });
-  // console.log("Add Enployee", AddEmployee);
-  if (loading) return <Loading></Loading>;
   return (
-    <div className="w-11/12 mt-2 mx-auto">
+    <div className="mt-4 mx-auto">
       <Helmet>
         <title>Safe Asset || Add Employee</title>
       </Helmet>
@@ -69,6 +66,7 @@ const AddAnEmployee = () => {
         </div>
         <AddEmployeeTable
           reset={reset}
+          loading={loading}
           refetch={refetch}
           AddEmployee={AddEmployee}
         ></AddEmployeeTable>

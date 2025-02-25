@@ -11,11 +11,11 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import EmployeeRequest from "../../HomeComponent/EmployeeRequest";
+import Loading from "../../Loading/Loading";
 
-const MyAssetsTable = ({ myAssistData, reset }) => {
+const MyAssetsTable = ({ myAssistData,loader, reset }) => {
   const [openModal, setOpenModal] = useState(false);
   const [asset, setAsset] = useState("");
-  // console.log(asset, "all assets")
   const [page, setPage] = useState(0);
 
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -28,6 +28,8 @@ const MyAssetsTable = ({ myAssistData, reset }) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
+
+if(loader)return<Loading></Loading>
 
   return (
     <div>

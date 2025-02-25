@@ -13,7 +13,8 @@ import { useEffect, useState } from "react";
 import useAuth from "../Hook/useAtuh";
 import { axiosSecure } from "../Hook/useAxiosSecure";
 import Swal from "sweetalert2";
-const AddEmployeeTable = ({ AddEmployee, reset, refetch }) => {
+import Loading from "../Loading/Loading";
+const AddEmployeeTable = ({ AddEmployee, loading, reset, refetch }) => {
   const { user } = useAuth();
   const handleAddTeam = async (email) => {
     const updateUser = {
@@ -80,6 +81,7 @@ const AddEmployeeTable = ({ AddEmployee, reset, refetch }) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
+  if(loading)return<Loading></Loading>
   return (
     <div>
       <Paper>
